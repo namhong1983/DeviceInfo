@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1067235472553",
+    "project_id": "device-info-ff1fe",
+    "storage_bucket": "device-info-ff1fe.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1067235472553:android:e59a9922d9eafbed2365b8",
+        "android_client_info": {
+          "package_name": "com.toralabs.deviceinfo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1067235472553-bvarjc0soqrv0gr537tofsud4ogidoms.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCK4tNUE22bo_k91p-UHg3Wphpr36VLfEU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1067235472553-bvarjc0soqrv0gr537tofsud4ogidoms.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

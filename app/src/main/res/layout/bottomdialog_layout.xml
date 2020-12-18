@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="15dp"
+    android:layout_margin="10dp"
+    android:id="@+id/relBottom">
+
+    <TextView
+        android:id="@+id/txtStat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="8dp"
+        android:text="@string/enjoying"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:id="@+id/linearBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtStat"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="10dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnLeft"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="33dp"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="@drawable/button_border"
+            android:text="@string/notreally"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="17sp" />
+
+        <Button
+            android:id="@+id/btnRight"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="33dp"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="@drawable/button_bg"
+            android:text="@string/yes"
+            android:textAllCaps="false"
+            android:textSize="17sp" />
+    </LinearLayout>
+
+</RelativeLayout>

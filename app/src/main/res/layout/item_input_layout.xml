@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white_bg">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="3dp"
+        app:cardBackgroundColor="@color/bg"
+        app:cardCornerRadius="4dp"
+        app:cardElevation="4dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/relInput"
+            android:background="?attr/selectableItemBackground"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/txtName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="3dp"
+                android:maxLines="1"
+                android:text=""
+                android:textColor="@color/textgrey"
+                android:textSize="15.7sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txtInputDevice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txtName"
+                android:layout_marginBottom="3dp"
+                android:text=""
+                android:textColor="@color/textgrey"
+                android:textSize="14.5sp" />
+
+            <TextView
+                android:id="@+id/txtVendorId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txtInputDevice"
+                android:layout_marginBottom="3dp"
+                android:text=""
+                android:textColor="@color/textgrey"
+                android:textSize="14.5sp" />
+
+            <TextView
+                android:id="@+id/txtProId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txtVendorId"
+                android:layout_marginBottom="3dp"
+                android:text=""
+                android:textColor="@color/textgrey"
+                android:textSize="14.5sp" />
+
+            <TextView
+                android:id="@+id/txtKeyboardType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txtProId"
+                android:layout_marginBottom="3dp"
+                android:text=""
+                android:textColor="@color/textgrey"
+                android:textSize="14.5sp" />
+
+            <TextView
+                android:id="@+id/txtDesc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txtKeyboardType"
+                android:layout_marginEnd="3dp"
+                android:layout_marginBottom="3dp"
+                android:textColor="@color/textgrey"
+                android:textSize="14.5sp" />
+
+            <TextView
+                android:id="@+id/txtDescriptor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txtKeyboardType"
+                android:layout_marginBottom="3dp"
+                android:layout_toEndOf="@id/txtDesc"
+                android:text=""
+                android:textColor="@color/textgrey"
+                android:textSize="14.5sp" />
+
+            <TextView
+                android:id="@+id/txtHasVib"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txtDescriptor"
+                android:layout_marginBottom="3dp"
+                android:text=""
+                android:textColor="@color/textgrey"
+                android:textSize="14.5sp" />
+
+            <TextView
+                android:id="@+id/txtSour"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txtHasVib"
+                android:layout_marginEnd="3dp"
+                android:layout_marginBottom="3dp"
+                android:text=""
+                android:textColor="@color/textgrey"
+                android:textSize="14.5sp" />
+
+            <TextView
+                android:id="@+id/txtSources"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txtHasVib"
+                android:layout_marginBottom="3dp"
+                android:layout_toEndOf="@id/txtSour"
+                android:text=""
+                android:textColor="@color/textgrey"
+                android:textSize="14.5sp" />
+
+            <RelativeLayout
+                android:id="@+id/relMotionRange"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txtSources"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/txtMotionEvents"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginBottom="3dp"
+                    android:maxLines="1"
+                    android:text="@string/motionrangedetails"
+                    android:textColor="@color/textgrey"
+                    android:textSize="14.5sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/txtAxis"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txtMotionEvents"
+                    android:layout_marginBottom="3dp"
+                    android:text=""
+                    android:textColor="@color/textgrey"
+                    android:textSize="14.5sp" />
+
+                <TextView
+                    android:id="@+id/txtRange"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txtAxis"
+                    android:layout_marginBottom="3dp"
+                    android:text=""
+                    android:textColor="@color/textgrey"
+                    android:textSize="14.5sp" />
+
+                <TextView
+                    android:id="@+id/txtFlat"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txtRange"
+                    android:layout_marginBottom="3dp"
+                    android:text=""
+                    android:textColor="@color/textgrey"
+                    android:textSize="14.5sp" />
+
+                <TextView
+                    android:id="@+id/txtFuzz"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txtFlat"
+                    android:layout_marginBottom="3dp"
+                    android:text=""
+                    android:textColor="@color/textgrey"
+                    android:textSize="14.5sp" />
+
+                <TextView
+                    android:id="@+id/txtResolution"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txtFuzz"
+                    android:layout_marginBottom="3dp"
+                    android:text=""
+                    android:textColor="@color/textgrey"
+                    android:textSize="14.5sp" />
+
+                <TextView
+                    android:id="@+id/txtSource"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txtResolution"
+                    android:layout_marginBottom="3dp"
+                    android:text=""
+                    android:textColor="@color/textgrey"
+                    android:textSize="14.5sp" />
+
+            </RelativeLayout>
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>

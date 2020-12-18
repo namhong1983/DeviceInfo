@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg"
+    android:id="@+id/relMain"
+    tools:context=".activities.MainActivity">
+
+    <com.ogaclejapan.smarttablayout.SmartTabLayout
+        android:id="@+id/smartTab"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:paddingStart="5dp"
+        android:paddingEnd="5dp"
+        app:stl_defaultTabTextAllCaps="true"
+        app:stl_defaultTabTextColor="@color/white"
+        app:stl_defaultTabTextSize="12sp"
+        app:stl_dividerThickness="0dp"
+        app:stl_indicatorCornerRadius="100dp"
+        app:stl_indicatorGravity="center"
+        app:stl_indicatorInterpolation="smart"
+        app:stl_indicatorThickness="30dp"
+        app:stl_titleOffset="auto_center"
+        app:stl_underlineThickness="0dp" />
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/ad_banner"
+        android:layout_below="@id/smartTab"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+    <RelativeLayout
+        android:id="@+id/ad_banner"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:visibility="gone" />
+</RelativeLayout>

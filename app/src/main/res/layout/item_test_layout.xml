@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardview"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    android:background="@color/white_bg">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bg"
+        android:id="@+id/relTest"
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/imgMain"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:layout_centerVertical="true"
+            android:contentDescription="@null"
+            app:tint="@color/testcolor" />
+
+        <TextView
+            android:id="@+id/testName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="12dp"
+            android:layout_toStartOf="@id/imgStatus"
+            android:layout_toEndOf="@id/imgMain"
+            android:maxLines="1"
+            android:textColor="@color/testcolor"
+            android:textSize="14.5sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/imgStatus"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:contentDescription="@null" />
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#2F4FE3</color>
+    <color name="colorPrimaryDark">#2D4BCF</color>
+    <color name="colorAccent">#2F4FE3</color>
+    <color name="pink">#CF0E00</color>
+    <color name="grey">#7B7B7B</color>
+    <color name="darkgrey">#807E7E</color>
+    <color name="textgrey">#343232</color>
+    <color name="textcolor">#000000</color>
+    <color name="bg">#FFFFFF</color>
+    <color name="white">#FFFFFF</color>
+    <color name="white_bg">#FFFFFF</color>
+    <color name="extreme_mode">#FFFFFF</color>
+    <color name="snackbar_text">#FFFFFF</color>
+    <color name="romcolor">#ea1e63</color>
+    <color name="ramcolor">#2F4FE3</color>
+    <color name="syscolor">#0FB015</color>
+    <color name="sdcardcolor">#4F10C2</color>
+    <color name="zram">#EF3D05</color>
+    <color name="yellow">#FFC000</color>
+    <color name="testcolor">#515151</color>
+    <color name="splashgrey">#969696</color>
+
+    <color name="black">#000000</color>
+    <color name="red">#FF0000</color>
+    <color name="green">#00FF00</color>
+    <color name="blue">#0000FF</color>
+
+    <color name="theme1">#f44236</color>
+    <color name="theme1dark">#D73A2F</color>
+    <color name="theme1accent">#009606</color>
+
+    <color name="theme2">#ea1e63</color>
+    <color name="theme2dark">#D21B59</color>
+    <color name="theme2accent">#2647dd</color>
+
+    <color name="theme3">#9a28b1</color>
+    <color name="theme3dark">#8C239F</color>
+    <color name="theme3accent">#C97800</color>
+
+    <color name="theme4">#683ab7</color>
+    <color name="theme4dark">#602BBF</color>
+    <color name="theme4accent">#C19000</color>
+
+    <color name="theme5">#2F4FE3</color>
+    <color name="theme5dark">#2D4BCF</color>
+    <color name="theme5accent">#CF3B0C</color>
+
+    <color name="theme6">#2295f0</color>
+    <color name="theme6dark">#2087D9</color>
+    <color name="theme6accent">#BC0E4A</color>
+
+    <color name="theme7">#04a8f5</color>
+    <color name="theme7dark">#0396DA</color>
+    <color name="theme7accent">#C20D4B</color>
+
+    <color name="theme8">#00bed2</color>
+    <color name="theme8dark">#02A7B8</color>
+    <color name="theme8accent">#C1154F</color>
+
+    <color name="theme9">#009788</color>
+    <color name="theme9dark">#01897C</color>
+    <color name="theme9accent">#C1360B</color>
+
+    <color name="theme10">#4cb050</color>
+    <color name="theme10dark">#00A607</color>
+    <color name="theme10accent">#C93000</color>
+
+    <color name="theme11">#ff9700</color>
+    <color name="theme11dark">#E08501</color>
+    <color name="theme11accent">#5A1ACF</color>
+
+    <color name="theme12">#FFC000</color>
+    <color name="theme12dark">#EAB000</color>
+    <color name="theme12accent">#5413C8</color>
+
+    <color name="theme13">#D2E41D</color>
+    <color name="theme13dark">#D0E122</color>
+    <color name="theme13accent">#5112C1</color>
+
+    <color name="theme14">#fe5722</color>
+    <color name="theme14dark">#F94C15</color>
+    <color name="theme14accent">#1B31AD</color>
+
+    <color name="theme15">#795547</color>
+    <color name="theme15dark">#5B4137</color>
+    <color name="theme15accent">#BF0F4A</color>
+
+
+</resources>

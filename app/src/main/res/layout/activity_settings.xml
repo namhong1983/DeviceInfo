@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rel_settings"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg"
+    android:scrollbars="none"
+    tools:context=".activities.SettingsActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/txt_theme"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="60dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:text="@string/theme"
+            android:textColor="@color/pink"
+            android:textSize="15sp" />
+
+        <RelativeLayout
+            android:id="@+id/rel_theme"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txt_theme"
+            android:background="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:padding="10dp">
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:contentDescription="@string/desc_mode"
+                app:srcCompat="@drawable/mode_ic"
+                app:tint="@color/darkgrey" />
+
+            <TextView
+                android:id="@+id/theme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="52dp"
+                android:text="@string/theme"
+                android:textColor="@color/textcolor"
+                android:textSize="16.2sp" />
+
+            <TextView
+                android:id="@+id/text_themename"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/theme"
+                android:layout_marginStart="52dp"
+                android:layout_marginTop="2dp"
+                android:text="@string/light"
+                android:textColor="@color/darkgrey"
+                android:textSize="15sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rel_color"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/rel_theme"
+            android:background="?android:attr/selectableItemBackground"
+            android:padding="10dp">
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:contentDescription="@string/desc_theme"
+                app:srcCompat="@drawable/color_ic"
+                app:tint="@color/darkgrey" />
+
+            <TextView
+                android:id="@+id/themecolor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="52dp"
+                android:layout_toStartOf="@id/circle"
+                android:text="@string/accent"
+                android:textColor="@color/textcolor"
+                android:textSize="16.2sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/themecolor"
+                android:layout_marginStart="52dp"
+                android:layout_marginTop="2dp"
+                android:text="@string/select_accent"
+                android:textColor="@color/darkgrey"
+                android:textSize="15sp" />
+
+            <ImageView
+                android:id="@+id/circle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="15dp"
+                android:contentDescription="@string/desc_circlecolor"
+                android:src="@drawable/circle" />
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/view1"
+            android:layout_width="match_parent"
+            android:layout_height="0.4px"
+            android:layout_below="@id/rel_color"
+            android:background="@color/darkgrey" />
+
+        <TextView
+            android:id="@+id/txt_general"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/view1"
+            android:layout_marginStart="60dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:text="@string/general"
+            android:textColor="@color/pink"
+            android:textSize="15sp" />
+
+        <RelativeLayout
+            android:id="@+id/rel_temp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txt_general"
+            android:background="?android:attr/selectableItemBackground"
+            android:padding="10dp">
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:contentDescription="@string/desc_temp"
+                android:src="@drawable/thermometer"
+                app:tint="@color/darkgrey" />
+
+            <TextView
+                android:id="@+id/temp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="52dp"
+                android:text="@string/temp_unit"
+                android:textColor="@color/textcolor"
+                android:textSize="16.2sp" />
+
+            <TextView
+                android:id="@+id/text_temp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/temp"
+                android:layout_marginStart="52dp"
+                android:layout_marginTop="2dp"
+                android:text="@string/cels"
+                android:textColor="@color/darkgrey"
+                android:textSize="15sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rel_export"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/rel_temp"
+            android:background="?android:attr/selectableItemBackground"
+            android:padding="10dp">
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:contentDescription="@string/desc_export"
+                android:src="@drawable/downloads"
+                app:tint="@color/darkgrey" />
+
+            <TextView
+                android:id="@+id/exp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="52dp"
+                android:text="@string/export_data"
+                android:textColor="@color/textcolor"
+                android:textSize="16.2sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/exp"
+                android:layout_marginStart="52dp"
+                android:layout_marginTop="2dp"
+                android:text="@string/save"
+                android:textColor="@color/darkgrey"
+                android:textSize="15sp" />
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/view2"
+            android:layout_width="match_parent"
+            android:layout_height="0.4px"
+            android:layout_below="@id/rel_export"
+            android:background="@color/darkgrey" />
+
+        <TextView
+            android:id="@+id/txt_support"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/view2"
+            android:layout_marginStart="60dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:text="@string/supportus"
+            android:textColor="@color/pink"
+            android:textSize="15sp" />
+
+        <RelativeLayout
+            android:id="@+id/rel_rate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txt_support"
+            android:background="?android:attr/selectableItemBackground"
+            android:padding="10dp">
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:contentDescription="@string/desc_rate"
+                app:srcCompat="@drawable/rate_ic"
+                app:tint="@color/darkgrey" />
+
+            <TextView
+                android:id="@+id/txt_rate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="52dp"
+                android:text="@string/rate"
+                android:textColor="@color/textcolor"
+                android:textSize="16.2sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txt_rate"
+                android:layout_marginStart="52dp"
+                android:layout_marginTop="2dp"
+                android:text="@string/rate_stat"
+                android:textColor="@color/darkgrey"
+                android:textSize="15sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rel_removeads"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/rel_rate"
+            android:background="?android:attr/selectableItemBackground"
+            android:padding="10dp">
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:contentDescription="@string/desc_ads"
+                app:srcCompat="@drawable/money_ic"
+                app:tint="@color/darkgrey" />
+
+            <TextView
+                android:id="@+id/txt_remove"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="52dp"
+                android:text="@string/removeads"
+                android:textColor="@color/textcolor"
+                android:textSize="16.2sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txt_remove"
+                android:layout_marginStart="52dp"
+                android:layout_marginTop="2dp"
+                android:text="@string/ads"
+                android:textColor="@color/darkgrey"
+                android:textSize="15sp" />
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/view3"
+            android:layout_width="match_parent"
+            android:layout_height="0.4px"
+            android:layout_below="@id/rel_removeads"
+            android:background="@color/darkgrey" />
+
+        <TextView
+            android:id="@+id/txt_other"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/view3"
+            android:layout_marginStart="60dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:text="@string/other"
+            android:textColor="@color/pink"
+            android:textSize="15sp" />
+
+        <RelativeLayout
+            android:id="@+id/rel_feedback"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txt_other"
+            android:background="?android:attr/selectableItemBackground"
+            android:padding="10dp">
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:contentDescription="@string/desc_feedback"
+                app:srcCompat="@drawable/email"
+                app:tint="@color/darkgrey" />
+
+            <TextView
+                android:id="@+id/txt_feedback"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="52dp"
+                android:text="@string/feedback"
+                android:textColor="@color/textcolor"
+                android:textSize="16.2sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txt_feedback"
+                android:layout_marginStart="52dp"
+                android:layout_marginTop="2dp"
+                android:text="@string/feedback_stat"
+                android:textColor="@color/darkgrey"
+                android:textSize="15sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rel_app_version"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/rel_feedback"
+            android:background="?android:attr/selectableItemBackground"
+            android:padding="10dp">
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:contentDescription="@string/desc_appversion"
+                app:srcCompat="@drawable/info"
+                app:tint="@color/darkgrey" />
+
+            <TextView
+                android:id="@+id/txt_version"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="52dp"
+                android:text="@string/app_version"
+                android:textColor="@color/textcolor"
+                android:textSize="16.2sp" />
+
+            <TextView
+                android:id="@+id/text_version"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txt_version"
+                android:layout_marginStart="52dp"
+                android:layout_marginTop="2dp"
+                android:text=""
+                android:textColor="@color/darkgrey"
+                android:textSize="15sp" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+</ScrollView>
+

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/relMainInput"
+    android:background="@color/white_bg">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="3dp"
+        android:id="@+id/cardview"
+        app:cardBackgroundColor="@color/bg"
+        app:cardCornerRadius="4dp"
+        app:cardElevation="4dp">
+
+        <com.facebook.ads.NativeAdLayout
+            android:id="@+id/nativeBannerAd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
+
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>

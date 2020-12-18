@@ -1,0 +1,663 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/scrollview"
+    android:background="@color/white_bg"
+    android:overScrollMode="never"
+    android:scrollbars="none">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardRamStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            app:cardCornerRadius="4dp"
+            app:cardElevation="4dp"
+            app:contentPadding="4dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/txtRamTotal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="2dp"
+                    android:text=""
+                    android:textColor="@color/white"
+                    android:textSize="13.5sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:layout_toEndOf="@id/txtRamTotal"
+                    android:text="MB Total"
+                    android:textColor="@color/white"
+                    android:textSize="10sp"
+                    tools:ignore="SmallSp" />
+
+                <TextView
+                    android:id="@+id/txtRamUsed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_toStartOf="@id/txtMbUsed"
+                    android:padding="2dp"
+                    android:text=""
+                    android:textColor="@color/white"
+                    android:textSize="13.5sp" />
+
+                <TextView
+                    android:id="@+id/txtMbUsed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginEnd="4dp"
+                    android:text="MB Used"
+                    android:textColor="@color/white"
+                    android:textSize="10sp"
+                    tools:ignore="SmallSp" />
+
+                <com.github.lzyzsd.circleprogress.ArcProgress
+                    android:id="@+id/arcProgress"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="3dp"
+                    android:layout_marginBottom="5dp"
+                    app:arc_bottom_text="RAM"
+                    app:arc_bottom_text_size="14sp"
+                    app:arc_finished_color="#FFFFFF"
+                    app:arc_max="100"
+                    app:arc_text_color="@color/white"
+                    app:arc_text_size="32sp" />
+
+                <com.github.mikephil.charting.charts.LineChart
+                    android:id="@+id/lineChart"
+                    android:layout_width="match_parent"
+                    android:layout_height="110dp"
+                    android:layout_below="@id/txtRamTotal"
+                    android:layout_marginStart="3dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_toEndOf="@id/arcProgress"
+                    android:padding="10dp" />
+
+                <TextView
+                    android:id="@+id/txtFreeRam"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/lineChart"
+                    android:layout_marginStart="5dp"
+                    android:layout_toStartOf="@id/txtFree"
+                    android:padding="2dp"
+                    android:text=""
+                    android:textColor="@color/white"
+                    android:textSize="13.5sp" />
+
+                <TextView
+                    android:id="@+id/txtFree"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/lineChart"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginEnd="4dp"
+                    android:paddingBottom="3dp"
+                    android:text="MB Free"
+                    android:textColor="@color/white"
+                    android:textSize="10sp"
+                    tools:ignore="SmallSp" />
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/cpuStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/cardRamStatus"
+            android:layout_marginStart="5dp"
+            android:padding="5dp"
+            android:text="@string/cpu_status"
+            android:textColor="@color/textgrey"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerCpu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/cpuStatus"
+            android:layout_margin="5dp"
+            android:layoutAnimation="@anim/recycler_animation"
+            android:scrollbars="none" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardSystem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/recyclerCpu"
+            android:layout_margin="3dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:padding="4dp"
+            app:cardBackgroundColor="@color/bg"
+            app:cardCornerRadius="4dp"
+            app:cardElevation="5dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true">
+
+                <ImageView
+                    android:id="@+id/img_sys"
+                    android:layout_width="50dp"
+                    android:layout_height="55dp"
+                    android:layout_centerVertical="true"
+                    android:contentDescription="@null"
+                    android:padding="5dp"
+                    android:src="@drawable/system" />
+
+                <TextView
+                    android:id="@+id/txt_sys"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginBottom="2dp"
+                    android:layout_toEndOf="@id/img_sys"
+                    android:maxLines="1"
+                    android:text="@string/sys_store"
+                    android:textColor="@color/textgrey"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <ProgressBar
+                    android:id="@+id/progress_sys"
+                    style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txt_sys"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginEnd="40dp"
+                    android:layout_toEndOf="@id/img_sys" />
+
+                <TextView
+                    android:id="@+id/txtSys_percent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txt_sys"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="1dp"
+                    android:maxLines="1"
+                    android:paddingStart="3dp"
+                    android:paddingEnd="2dp"
+                    android:textColor="@color/textgrey"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/txtSysStorageInfo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/progress_sys"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_toEndOf="@id/img_sys"
+                    android:paddingBottom="3dp"
+                    android:text=""
+                    android:textColor="@color/textgrey"
+                    android:textSize="12.5sp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardAd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/cardSystem"
+            android:layout_margin="5dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:padding="7dp"
+            android:visibility="gone"
+            app:cardBackgroundColor="@color/bg"
+            app:cardCornerRadius="4dp"
+            app:cardElevation="5dp">
+
+            <com.facebook.ads.NativeAdLayout
+                android:id="@+id/nativeBannerAd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardInternal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/cardAd"
+            android:layout_margin="3dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:padding="4dp"
+            app:cardBackgroundColor="@color/bg"
+            app:cardCornerRadius="4dp"
+            app:cardElevation="5dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true">
+
+                <ImageView
+                    android:id="@+id/img_int"
+                    android:layout_width="50dp"
+                    android:layout_height="55dp"
+                    android:layout_centerVertical="true"
+                    android:contentDescription="@null"
+                    android:padding="10dp"
+                    android:src="@drawable/rom" />
+
+                <TextView
+                    android:id="@+id/txt_int"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginBottom="2dp"
+                    android:layout_toEndOf="@id/img_int"
+                    android:maxLines="1"
+                    android:text="@string/in_store"
+                    android:textColor="@color/textgrey"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <ProgressBar
+                    android:id="@+id/progress_int"
+                    style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txt_int"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginEnd="40dp"
+                    android:layout_toEndOf="@id/img_int" />
+
+                <TextView
+                    android:id="@+id/txtInt_percent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txt_int"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="1dp"
+                    android:maxLines="1"
+                    android:paddingStart="3dp"
+                    android:paddingEnd="2dp"
+                    android:text=""
+                    android:textColor="@color/textgrey"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/txtIntStorageInfo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/progress_int"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_toEndOf="@id/img_int"
+                    android:paddingBottom="3dp"
+                    android:text=""
+                    android:textColor="@color/textgrey"
+                    android:textSize="12.5sp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardExternal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/cardInternal"
+            android:layout_margin="3dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:padding="4dp"
+            android:visibility="gone"
+            app:cardBackgroundColor="@color/bg"
+            app:cardCornerRadius="4dp"
+            app:cardElevation="5dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true">
+
+                <ImageView
+                    android:id="@+id/img_ext"
+                    android:layout_width="50dp"
+                    android:layout_height="55dp"
+                    android:layout_centerVertical="true"
+                    android:contentDescription="@null"
+                    android:padding="10dp"
+                    android:src="@drawable/ram" />
+
+                <TextView
+                    android:id="@+id/txt_ext"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginBottom="2dp"
+                    android:layout_toEndOf="@id/img_ext"
+                    android:maxLines="1"
+                    android:text="@string/ext_store"
+                    android:textColor="@color/textgrey"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <ProgressBar
+                    android:id="@+id/progress_ext"
+                    style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txt_ext"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginEnd="40dp"
+                    android:layout_toEndOf="@id/img_ext" />
+
+                <TextView
+                    android:id="@+id/txtExternal_percent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txt_ext"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="1dp"
+                    android:maxLines="1"
+                    android:paddingStart="3dp"
+                    android:paddingEnd="2dp"
+                    android:text=""
+                    android:textColor="@color/textgrey"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/txtExternalInfo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/progress_ext"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_toEndOf="@id/img_ext"
+                    android:paddingBottom="3dp"
+                    android:text=""
+                    android:textColor="@color/textgrey"
+                    android:textSize="12.5sp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardBattery"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/cardExternal"
+            android:layout_margin="3dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:padding="4dp"
+            app:cardBackgroundColor="@color/bg"
+            app:cardCornerRadius="4dp"
+            app:cardElevation="5dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true">
+
+                <ImageView
+                    android:id="@+id/img_battery"
+                    android:layout_width="50dp"
+                    android:layout_height="55dp"
+                    android:layout_centerVertical="true"
+                    android:contentDescription="@null"
+                    android:padding="10dp"
+                    android:src="@drawable/battery" />
+
+                <TextView
+                    android:id="@+id/txt_battery"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="2dp"
+                    android:layout_marginBottom="2dp"
+                    android:layout_toEndOf="@id/img_battery"
+                    android:maxLines="1"
+                    android:text="@string/battery"
+                    android:textColor="@color/textgrey"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/txt_charging"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="2dp"
+                    android:layout_toEndOf="@id/txt_battery"
+                    android:maxLines="1"
+                    android:text="@string/chargingbrack"
+                    android:textColor="@color/textgrey"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:visibility="gone" />
+
+                <ProgressBar
+                    android:id="@+id/progress_battery"
+                    style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txt_battery"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginEnd="40dp"
+                    android:layout_toEndOf="@id/img_battery" />
+
+                <TextView
+                    android:id="@+id/txtBattery_percent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txt_battery"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="1dp"
+                    android:maxLines="1"
+                    android:paddingStart="3dp"
+                    android:paddingEnd="2dp"
+                    android:text=""
+                    android:textColor="@color/textgrey"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/txtBatteryInfo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/progress_battery"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_toEndOf="@id/img_battery"
+                    android:paddingBottom="3dp"
+                    android:textColor="@color/textgrey"
+                    android:textSize="12.5sp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/cardBattery"
+            android:layout_margin="5dp"
+            android:orientation="horizontal"
+            android:padding="3dp">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardSensors"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:focusable="true"
+                android:padding="7dp"
+                app:cardBackgroundColor="@color/bg"
+                app:cardCornerRadius="4dp"
+                app:cardElevation="5dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <ImageView
+                        android:id="@+id/img_sensor"
+                        android:layout_width="50dp"
+                        android:layout_height="60dp"
+                        android:layout_centerVertical="true"
+                        android:contentDescription="@null"
+                        android:padding="10dp"
+                        android:src="@drawable/sensor" />
+
+                    <TextView
+                        android:id="@+id/txt_sensorcount"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="3dp"
+                        android:layout_marginEnd="5dp"
+                        android:layout_marginBottom="2dp"
+                        android:layout_toEndOf="@id/img_sensor"
+                        android:text=""
+                        android:textColor="@color/textgrey"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/txtsensor"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/txt_sensorcount"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginEnd="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_toEndOf="@id/img_sensor"
+                        android:paddingBottom="3dp"
+                        android:text="@string/sensor_available"
+                        android:textColor="@color/textgrey"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardApps"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:focusable="true"
+                android:padding="7dp"
+                app:cardBackgroundColor="@color/bg"
+                app:cardCornerRadius="4dp"
+                app:cardElevation="5dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <ImageView
+                        android:id="@+id/img_apps"
+                        android:layout_width="50dp"
+                        android:layout_height="60dp"
+                        android:layout_centerVertical="true"
+                        android:contentDescription="@null"
+                        android:padding="10dp"
+                        android:src="@drawable/android" />
+
+                    <TextView
+                        android:id="@+id/txt_appcount"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="3dp"
+                        android:layout_marginEnd="5dp"
+                        android:layout_marginBottom="2dp"
+                        android:layout_toEndOf="@id/img_apps"
+                        android:text=""
+                        android:textColor="@color/textgrey"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/txtapps"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/txt_appcount"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginEnd="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_toEndOf="@id/img_apps"
+                        android:paddingBottom="3dp"
+                        android:text="@string/apps_inst"
+                        android:textColor="@color/textgrey"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+    </RelativeLayout>
+</ScrollView>

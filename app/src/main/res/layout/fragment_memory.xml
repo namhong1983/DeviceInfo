@@ -1,0 +1,574 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white_bg">
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="20dp" />
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white_bg"
+        android:visibility="visible">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:background="@color/white_bg">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_ram"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:padding="7dp"
+                app:cardBackgroundColor="@color/bg"
+                app:cardCornerRadius="4dp"
+                app:cardElevation="5dp">
+
+                <RelativeLayout
+                    android:id="@+id/rel_ram"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <ImageView
+                        android:id="@+id/img_ram"
+                        android:layout_width="60dp"
+                        android:layout_height="70dp"
+                        android:layout_centerVertical="true"
+                        android:contentDescription="@null"
+                        android:padding="5dp"
+                        android:src="@drawable/ram"
+                        app:tint="@color/ramcolor" />
+
+                    <TextView
+                        android:id="@+id/txt_ram"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="3dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_toEndOf="@id/img_ram"
+                        android:maxLines="1"
+                        android:text="@string/ram"
+                        android:textColor="@color/textgrey"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/txt_usedram"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/txt_ram"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_toEndOf="@id/img_ram"
+                        android:maxLines="1"
+                        android:text=""
+                        android:textColor="@color/textgrey"
+                        android:textSize="13.5sp" />
+
+                    <ProgressBar
+                        android:id="@+id/progress_ram"
+                        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/txt_usedram"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="3dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginBottom="3dp"
+                        android:layout_toEndOf="@id/img_ram" />
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_ad"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/card_ram"
+                android:layout_margin="5dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:padding="7dp"
+                android:visibility="gone"
+                app:cardBackgroundColor="@color/bg"
+                app:cardCornerRadius="4dp"
+                app:cardElevation="5dp">
+
+                <com.facebook.ads.NativeAdLayout
+                    android:id="@+id/nativeBannerAd"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_zram"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/card_ad"
+                android:layout_margin="5dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:padding="7dp"
+                android:visibility="gone"
+                app:cardBackgroundColor="@color/bg"
+                app:cardCornerRadius="4dp"
+                app:cardElevation="5dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <ImageView
+                        android:id="@+id/imgzram"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_centerVertical="true"
+                        android:contentDescription="@null"
+                        android:padding="8dp"
+                        android:src="@drawable/zram"
+                        app:tint="@color/zram" />
+
+                    <TextView
+                        android:id="@+id/txt_zram"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="3dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginBottom="2dp"
+                        android:layout_toEndOf="@id/imgzram"
+                        android:maxLines="1"
+                        android:text="@string/zram"
+                        android:textColor="@color/textgrey"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/txt_usedzram"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/txt_zram"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_toEndOf="@id/imgzram"
+                        android:maxLines="1"
+                        android:text=""
+                        android:textColor="@color/textgrey"
+                        android:textSize="13.5sp" />
+
+                    <ProgressBar
+                        android:id="@+id/progress_zram"
+                        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/txt_usedzram"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="3dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginBottom="3dp"
+                        android:layout_toEndOf="@id/imgzram" />
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_system"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/card_zram"
+                android:layout_margin="5dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:padding="7dp"
+                app:cardBackgroundColor="@color/bg"
+                app:cardCornerRadius="4dp"
+                app:cardElevation="5dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <ImageView
+                        android:id="@+id/img_sys"
+                        android:layout_width="60dp"
+                        android:layout_height="70dp"
+                        android:layout_centerVertical="true"
+                        android:contentDescription="@null"
+                        android:padding="5dp"
+                        android:src="@drawable/system"
+                        app:tint="@color/syscolor" />
+
+                    <TextView
+                        android:id="@+id/txt_sys"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="3dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginBottom="2dp"
+                        android:layout_toEndOf="@id/img_sys"
+                        android:maxLines="1"
+                        android:text="@string/sys_store"
+                        android:textColor="@color/textgrey"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/txt_syspath"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/txt_sys"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_toEndOf="@id/img_sys"
+                        android:maxLines="1"
+                        android:text=""
+                        android:textColor="@color/textgrey"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:id="@+id/txt_usedsys"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/txt_syspath"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_toEndOf="@id/img_sys"
+                        android:maxLines="1"
+                        android:text=""
+                        android:textColor="@color/textgrey"
+                        android:textSize="13.5sp" />
+
+                    <ProgressBar
+                        android:id="@+id/progress_sys"
+                        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/txt_usedsys"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="3dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginBottom="3dp"
+                        android:layout_toEndOf="@id/img_sys" />
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_rom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/card_system"
+                android:layout_margin="5dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:padding="7dp"
+                app:cardBackgroundColor="@color/bg"
+                app:cardCornerRadius="4dp"
+                app:cardElevation="5dp">
+
+                <RelativeLayout
+                    android:id="@+id/rel_rom"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <ImageView
+                        android:id="@+id/img_rom"
+                        android:layout_width="60dp"
+                        android:layout_height="70dp"
+                        android:layout_centerVertical="true"
+                        android:contentDescription="@null"
+                        android:padding="12dp"
+                        android:src="@drawable/rom"
+                        app:tint="@color/romcolor" />
+
+                    <TextView
+                        android:id="@+id/txt_rom"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="3dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginBottom="2dp"
+                        android:layout_toEndOf="@id/img_rom"
+                        android:maxLines="1"
+                        android:text="@string/in_store"
+                        android:textColor="@color/textgrey"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/txt_rompath"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/txt_rom"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_toEndOf="@id/img_rom"
+                        android:maxLines="1"
+                        android:textColor="@color/textgrey"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:id="@+id/txt_usedrom"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/txt_rompath"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_toEndOf="@id/img_rom"
+                        android:maxLines="1"
+                        android:textColor="@color/textgrey"
+                        android:textSize="13.5sp" />
+
+                    <ProgressBar
+                        android:id="@+id/progress_rom"
+                        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/txt_usedrom"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="3dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginBottom="3dp"
+                        android:layout_toEndOf="@id/img_rom" />
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_sd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/card_rom"
+                android:layout_margin="5dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:padding="7dp"
+                android:visibility="gone"
+                app:cardBackgroundColor="@color/bg"
+                app:cardCornerRadius="4dp"
+                app:cardElevation="5dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <ImageView
+                        android:id="@+id/img_sd"
+                        android:layout_width="60dp"
+                        android:layout_height="70dp"
+                        android:layout_centerVertical="true"
+                        android:contentDescription="@null"
+                        android:padding="10dp"
+                        android:src="@drawable/sdcard"
+                        app:tint="@color/sdcardcolor" />
+
+                    <TextView
+                        android:id="@+id/txt_sd"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="3dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginBottom="2dp"
+                        android:layout_toEndOf="@id/img_sd"
+                        android:maxLines="1"
+                        android:text="@string/ext_store"
+                        android:textColor="@color/textgrey"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/txt_sdpath"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/txt_sd"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_toEndOf="@id/img_sd"
+                        android:maxLines="1"
+                        android:textColor="@color/textgrey"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:id="@+id/txt_usedsd"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/txt_sdpath"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_toEndOf="@id/img_sd"
+                        android:maxLines="1"
+                        android:textColor="@color/textgrey"
+                        android:textSize="13.5sp" />
+
+                    <ProgressBar
+                        android:id="@+id/progress_ext"
+                        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/txt_usedsd"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="3dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginBottom="3dp"
+                        android:layout_toEndOf="@id/img_sd" />
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_raminfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/card_sd"
+                android:layout_margin="5dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:padding="7dp"
+                android:visibility="gone"
+                app:cardBackgroundColor="@color/bg"
+                app:cardCornerRadius="3dp"
+                app:cardElevation="3dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/txtRamInfo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="3.2dp"
+                        android:padding="8dp"
+                        android:text="RAM Information"
+                        android:textColor="@color/textcolor"
+                        android:textSize="15.5sp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:id="@+id/linear1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/txtRamInfo"
+                        android:layout_marginStart="14dp"
+                        android:layout_marginEnd="14dp"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:padding="3dp"
+                        android:visibility="gone">
+
+                        <TextView
+                            android:id="@+id/txt_ramtype"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1.75"
+                            android:text="@string/ramtype"
+                            android:textColor="@color/textgrey"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/txtRamType"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1.5"
+                            android:text=""
+                            android:textColor="@color/textcolor"
+                            android:textSize="15sp"
+                            android:textStyle="normal" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linear2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/linear1"
+                        android:layout_marginStart="14dp"
+                        android:layout_marginEnd="14dp"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:padding="3dp"
+                        android:visibility="gone">
+
+                        <TextView
+                            android:id="@+id/txt_bandwidth"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1.75"
+                            android:text="@string/bandwidth"
+                            android:textColor="@color/textgrey"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/txtBandwidth"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1.5"
+                            android:text=""
+                            android:textColor="@color/textcolor"
+                            android:textSize="15sp"
+                            android:textStyle="normal" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linear3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/linear2"
+                        android:layout_marginStart="14dp"
+                        android:layout_marginEnd="14dp"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:padding="3dp"
+                        android:visibility="gone">
+
+                        <TextView
+                            android:id="@+id/txt_channels"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1.75"
+                            android:text="@string/channels"
+                            android:textColor="@color/textgrey"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/txtChannels"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1.5"
+                            android:text=""
+                            android:textColor="@color/textcolor"
+                            android:textSize="15sp"
+                            android:textStyle="normal" />
+                    </LinearLayout>
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+        </RelativeLayout>
+    </ScrollView>
+</RelativeLayout>

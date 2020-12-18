@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white_bg">
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="20dp" />
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardBattery"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:clipToPadding="false"
+            android:descendantFocusability="blocksDescendants"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="48dp"
+            android:visibility="gone"
+            app:cardBackgroundColor="@color/bg"
+            app:cardCornerRadius="3dp"
+            app:cardElevation="4dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white_bg">
+
+                <TextView
+                    android:id="@+id/txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="7.2dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:text="@string/battery_stat"
+                    android:textColor="@color/textgrey"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <RelativeLayout
+                    android:id="@+id/rel_device"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txt"
+                    android:layout_marginLeft="7.2dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="7.2dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@color/bg"
+                    app:elevation="5dp">
+
+                    <TextView
+                        android:id="@+id/txt_level"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="15dp"
+                        android:layout_marginBottom="15dp"
+                        android:text=""
+                        android:textSize="50sp"
+                        android:textStyle="bold"
+                        android:visibility="visible" />
+
+                    <TextView
+                        android:id="@+id/txt_status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="22dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginEnd="6dp"
+                        android:layout_toEndOf="@id/txt_level"
+                        android:text=""
+                        android:textColor="@color/colorAccent"
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/text_ct"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/txt_status"
+                        android:layout_marginStart="22dp"
+                        android:layout_marginEnd="3dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_toEndOf="@id/txt_level"
+                        android:text=""
+                        android:textColor="@color/colorAccent"
+                        android:textSize="16sp"
+                        android:textStyle="normal"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:id="@+id/txt_current"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/txt_status"
+                        android:layout_marginEnd="6dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_toEndOf="@id/text_ct"
+                        android:text=""
+                        android:textColor="@color/colorAccent"
+                        android:textSize="16sp"
+                        android:textStyle="normal" />
+                </RelativeLayout>
+
+                <com.facebook.ads.NativeAdLayout
+                    android:id="@+id/nativeBannerAd"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/rel_device"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginRight="2dp"
+                    android:layout_marginBottom="4dp"
+                    android:visibility="gone" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_battery"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/nativeBannerAd"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="2dp"
+                    android:layout_marginBottom="4dp" />
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+    </androidx.core.widget.NestedScrollView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_battery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="16dp"
+        android:src="@drawable/battery"
+        android:tint="@color/white"
+        app:borderWidth="0dp"
+        app:elevation="8dp" />
+</RelativeLayout>
