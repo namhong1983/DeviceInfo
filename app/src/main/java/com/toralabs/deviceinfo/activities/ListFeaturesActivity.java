@@ -2,6 +2,7 @@ package com.toralabs.deviceinfo.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -26,6 +27,7 @@ public class ListFeaturesActivity extends AppCompatActivity implements NativeAdL
     ThemeConstant themeConstant;
     boolean bool;
     int themeNo, color;
+    String name = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,10 +43,12 @@ public class ListFeaturesActivity extends AppCompatActivity implements NativeAdL
         }
         bool = preferences.getPurchasePref();
         setContentView(R.layout.activity_list_features);
+        if (getIntent() != null && getIntent().getStringExtra("name") != null)
+            name = getIntent().getStringExtra("name");
         if (getSupportActionBar() != null && getIntent() != null) {
-            if (getIntent().getStringExtra("name").equals("feature")) {
+            if (name.equals("feature")) {
                 getSupportActionBar().setTitle(getResources().getString(R.string.devicefeat));
-            } else if (getIntent().getStringExtra("name").equals("ext")) {
+            } else if (name.equals("ext")) {
                 getSupportActionBar().setTitle(getResources().getString(R.string.gpuext));
             }
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -52,11 +56,11 @@ public class ListFeaturesActivity extends AppCompatActivity implements NativeAdL
         }
         txtFeatures = findViewById(R.id.txtFeatures);
         nativeAdLayout = findViewById(R.id.nativeBannerAd);
-        if (getIntent() != null && getIntent().getStringExtra("name").equals("feature")) {
+        if (getIntent() != null && name.equals("feature")) {
             if (getIntent().getStringArrayListExtra("featuresList") != null)
                 txtFeatures.setText(getIntent().getStringArrayListExtra("featuresList").toString().replace("[", "").replace("]", "").replace(", ", "\n").trim());
         }
-        if (getIntent() != null && getIntent().getStringExtra("name").equals("ext")) {
+        if (getIntent() != null && name.equals("ext")) {
             txtFeatures.setText(preferences.getGlExt().replace("[", "").replace("]", "").replace(", ", "\n").trim());
         }
         if (!bool) {

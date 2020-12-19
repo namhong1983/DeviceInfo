@@ -125,6 +125,7 @@ public class ExportDetails {
             builder.append(context.getResources().getString(R.string.vendor)).append(" : ").append(wide[0]).append("\n").append(context.getResources().getString(R.string.version)).append(" : ").append(wide[1]).append("\n").append(context.getResources().getString(R.string.algo)).append(" : ").append(wide[2]).append("\n").append(context.getResources().getString(R.string.systemid)).append(" : ").append(wide[3]).append("\n").append(context.getResources().getString(R.string.security_level)).append(" : ").append(wide[4]).append("\n").append(context.getResources().getString(R.string.maxhdcp)).append(" : ").append(wide[5]).append("\n").append(context.getResources().getString(R.string.max_sessions)).append(" : ").append(wide[6]).append("\n").append(context.getResources().getString(R.string.usage_reporting)).append(" : ").append(wide[7]).append("\n").append(context.getResources().getString(R.string.hdcp)).append(" : ").append(wide[8]).append("\n\n");
             mediaDrm.release();
         } catch (Exception e) {
+            builder.append("Widevine CDM not available on this device");
             e.printStackTrace();
         }
         try {
@@ -135,6 +136,7 @@ public class ExportDetails {
             builder.append(context.getResources().getString(R.string.vendor)).append(" : ").append(clearkey[0]).append("\n").append(context.getResources().getString(R.string.version)).append(" : ").append(clearkey[1]).append("\n\n");
             mediaDrm.release();
         } catch (Exception e) {
+            builder.append("Clearkey CDM not available on this device");
             e.printStackTrace();
         }
     }

@@ -179,6 +179,7 @@
     <string name="avail_mem">Available Memory</string>
     <string name="usedof">used of</string>
     <string name="nosensors">No Sensors Available</string>
+    <string name="nothermal">Thermals are restricted to system only. Accessing them requires Root.</string>
     <string name="nocodec">No Codecs Available</string>
     <string name="noinput">No Input Devices Available</string>
     <string name="nocamera">No Camera Available</string>

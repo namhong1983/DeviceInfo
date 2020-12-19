@@ -16,7 +16,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:text="@string/nosensors"
+        android:textAlignment="center"
+        android:padding="3dp"
+        android:text="@string/nothermal"
         android:textSize="17sp"
         android:textStyle="bold"
         android:visibility="gone" />

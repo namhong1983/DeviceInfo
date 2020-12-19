@@ -56,7 +56,7 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
     TextView txtQues, txtTouch, txtInfo;
     Button buttonNext, buttonDone;
     RelativeLayout relMain;
-    String tag, status;
+    String tag = "", status;
     LinearLayout linearLayout;
     int position;
     int color;

@@ -188,11 +188,14 @@ public class DashboardFragment extends Fragment implements Handler.Callback, Nat
         findViewByIds(view);
         uiMoreInfo();
         recyclerCpu.scheduleLayoutAnimation();
-        ObjectAnimator.ofInt(arcProgress, "progress", (int) (usedRAM * 100 / totalRAM)).setDuration(800).start();
-        ObjectAnimator.ofInt(progress_sys, "progress", (int) (usedSys * 100 / totalSys)).setDuration(800).start();
-        ObjectAnimator.ofInt(progress_int, "progress", (int) (usedInternal * 100 / totalInternal)).setDuration(800).start();
+        if (totalRAM != 0)
+            ObjectAnimator.ofInt(arcProgress, "progress", (int) (usedRAM * 100 / totalRAM)).setDuration(800).start();
+        if (totalSys != 0)
+            ObjectAnimator.ofInt(progress_sys, "progress", (int) (usedSys * 100 / totalSys)).setDuration(800).start();
+        if (totalInternal != 0)
+            ObjectAnimator.ofInt(progress_int, "progress", (int) (usedInternal * 100 / totalInternal)).setDuration(800).start();
         ObjectAnimator.ofInt(progress_battery, "progress", Integer.parseInt(level.substring(0, level.indexOf("%")))).setDuration(800).start();
-        if (isExtAvail)
+        if (isExtAvail && totalExternal != 0)
             ObjectAnimator.ofInt(progress_ext, "progress", (int) (usedExternal * 100 / totalExternal)).setDuration(800).start();
         sensorAnim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
@@ -280,7 +283,7 @@ public class DashboardFragment extends Fragment implements Handler.Callback, Nat
         cpuFreqAdapter = new CpuFreqAdapter(cpuCoresList, getContext(), color);
         if (coresCount > 3) {
             recyclerCpu.setLayoutManager(new GridLayoutManager(getContext(), 4));
-        } else {
+        } else if (coresCount > 0 && coresCount <= 3) {
             recyclerCpu.setLayoutManager(new GridLayoutManager(getContext(), 2));
         }
         recyclerCpu.setNestedScrollingEnabled(false);
