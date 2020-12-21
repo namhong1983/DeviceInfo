@@ -29,6 +29,7 @@ import com.facebook.ads.NativeAdListener;
 import com.toralabs.deviceinfo.BuildConfig;
 import com.toralabs.deviceinfo.R;
 import com.toralabs.deviceinfo.impClasses.NativeAdInflate;
+import com.toralabs.deviceinfo.menuItems.CustomSnackBar;
 import com.toralabs.deviceinfo.menuItems.Preferences;
 import com.toralabs.deviceinfo.menuItems.RemoveAds;
 import com.toralabs.deviceinfo.menuItems.ThemeConstant;
@@ -81,7 +82,7 @@ public class AboutActivity extends AppCompatActivity implements View.OnClickList
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
         cardAd = findViewById(R.id.cardAd);
-        scrollView = findViewById(R.id.scrollview);
+        scrollView = findViewById(R.id.scrollView);
         nativeAdLayout = findViewById(R.id.nativeBannerAd);
         txtVersion = findViewById(R.id.txtVersion);
         txtPackage = findViewById(R.id.txtPackage);
@@ -128,7 +129,9 @@ public class AboutActivity extends AppCompatActivity implements View.OnClickList
             startActivity(contact_intent);
         } else if (id == R.id.btnRemoveAds) {
             if (bool) {
-                Toast.makeText(getApplicationContext(), getResources().getString(R.string.adfree), Toast.LENGTH_LONG).show();
+                CustomSnackBar customSnackBar = new CustomSnackBar(AboutActivity.this, scrollView);
+                Toast.makeText(getApplicationContext(), getResources().getString(R.string.premium_user), Toast.LENGTH_SHORT).show();
+                customSnackBar.showSnackBar(getResources().getString(R.string.premium_user));
             } else {
                 removeAds = new RemoveAds(AboutActivity.this, scrollView);
                 removeAds.setupbillingclient();

@@ -266,7 +266,7 @@ public class DashboardFragment extends Fragment implements Handler.Callback, Nat
         count++;
         lineDataSet.setCircleHoleRadius(0f);
         lineDataSet.setCircleRadius(0f);
-        lineDataSet.setLineWidth(1f);
+        lineDataSet.setLineWidth(0.3f);
         lineDataSet.setColor(Color.WHITE);
         lineDataSet.setCircleColor(color);
         lineDataSet.setDrawCircles(false);

@@ -183,7 +183,7 @@ public class ExportDetails {
                 String[] data = str.trim().split(":");
                 a = Arrays.toString(data);
                 b = a.replace("[", "").replace("]", "").trim();
-                if (b.contains(",")) {
+                if (b!=null && b.contains(",")) {
                     key = b.substring(0, b.indexOf(","));
                     value = b.substring(b.indexOf(",") + 1);
                     if (key.trim().equals("Processor"))
@@ -274,7 +274,7 @@ public class ExportDetails {
                 type = "PRIVATE SENSOR";
             } else {
                 type = s.getStringType().replace("android.sensor.", "").toUpperCase();
-                if (type.contains("_")) {
+                if (type!=null && type.contains("_")) {
                     type = type.replace("_", " ");
                 }
             }

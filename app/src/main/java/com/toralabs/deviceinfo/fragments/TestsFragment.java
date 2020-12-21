@@ -213,7 +213,7 @@ public class TestsFragment extends Fragment implements TestAdapter.ItemClickList
 
     @Override
     public void onItemClick(int position, String tag, String name) {
-        if (!tag.contains("fingerprint") && position != 1) {
+        if (tag!=null && !tag.contains("fingerprint") && position != 1) {
             Intent intent = new Intent(getActivity(), TestActivity.class);
             intent.putExtra("tag", tag);
             intent.putExtra("name", name);
@@ -221,7 +221,7 @@ public class TestsFragment extends Fragment implements TestAdapter.ItemClickList
             ActivityOptions options =
                     ActivityOptions.makeCustomAnimation(getActivity(), android.R.anim.fade_in, android.R.anim.fade_out);
             startActivityForResult(intent, 100, options.toBundle());
-        } else if (tag.contains("fingerprint")) {
+        } else if (tag!=null && tag.contains("fingerprint")) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
                 if (fingerprintManager.isHardwareDetected()) {
                     biometric(position);

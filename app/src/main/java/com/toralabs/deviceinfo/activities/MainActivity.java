@@ -35,6 +35,7 @@ import com.toralabs.deviceinfo.R;
 import com.toralabs.deviceinfo.adapter.MainAdapter;
 import com.toralabs.deviceinfo.impClasses.BuildInfo;
 import com.toralabs.deviceinfo.impClasses.ExportThread;
+import com.toralabs.deviceinfo.menuItems.CustomSnackBar;
 import com.toralabs.deviceinfo.menuItems.FullScreenAds;
 import com.toralabs.deviceinfo.menuItems.Preferences;
 import com.toralabs.deviceinfo.menuItems.RemoveAds;
@@ -59,7 +60,7 @@ public class MainActivity extends AppCompatActivity implements Runnable, ViewPag
     FullScreenAds fullScreenAds;
     public int coresCount, drawableId;
     public boolean iconAvail;
-    RelativeLayout ad_banner, relBottom,relMain;
+    RelativeLayout ad_banner, relBottom, relMain;
     SmartTabLayout smartTabLayout;
     ViewPager viewPager;
     String color, darkIndicator;
@@ -122,7 +123,7 @@ public class MainActivity extends AppCompatActivity implements Runnable, ViewPag
         bool = preferences.getPurchasePref();
         viewPager = findViewById(R.id.view_pager);
         ad_banner = findViewById(R.id.ad_banner);
-        relMain=findViewById(R.id.relMain);
+        relMain = findViewById(R.id.relMain);
         smartTabLayout = findViewById(R.id.smartTab);
         ViewCompat.setElevation(smartTabLayout, 8);
         if (preferences.getMode()) {
@@ -165,7 +166,9 @@ public class MainActivity extends AppCompatActivity implements Runnable, ViewPag
             startActivity(new Intent(MainActivity.this, AboutActivity.class), options.toBundle());
         } else if (id == R.id.removeads) {
             if (bool) {
-                Toast.makeText(getApplicationContext(), getResources().getString(R.string.adfree), Toast.LENGTH_LONG).show();
+                CustomSnackBar customSnackBar = new CustomSnackBar(MainActivity.this, relMain);
+                Toast.makeText(getApplicationContext(), getResources().getString(R.string.premium_user), Toast.LENGTH_SHORT).show();
+                customSnackBar.showSnackBar(getResources().getString(R.string.premium_user));
             } else {
                 removeAds = new RemoveAds(MainActivity.this, viewPager);
                 removeAds.setupbillingclient();

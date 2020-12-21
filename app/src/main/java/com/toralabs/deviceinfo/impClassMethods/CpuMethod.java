@@ -120,7 +120,7 @@ public class CpuMethod {
                 String[] data = str.trim().split(":");
                 a = Arrays.toString(data);
                 b = a.replace("[", "").replace("]", "").trim();
-                if (b.contains(",")) {
+                if (b!=null && b.contains(",")) {
                     key = b.substring(0, b.indexOf(","));
                     value = b.substring(b.indexOf(",") + 1);
                     if (key.trim().equals("Processor"))

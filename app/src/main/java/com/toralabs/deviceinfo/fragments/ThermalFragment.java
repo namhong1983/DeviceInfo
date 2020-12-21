@@ -115,7 +115,7 @@ public class ThermalFragment extends Fragment {
                 for (int i = 0; i < 29; i++) {
                     if (buildInfo.thermalType(i) != null) {
                         final String temp = buildInfo.thermalTemp(i);
-                        if (!temp.contains("0.0")) {
+                        if (temp!=null && !temp.contains("0.0")) {
                             final int finalI = i;
                             if (getActivity() == null)
                                 return;

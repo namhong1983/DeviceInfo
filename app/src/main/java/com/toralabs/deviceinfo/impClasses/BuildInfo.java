@@ -348,7 +348,7 @@ public class BuildInfo {
         String temp, type;
         for (int i = 0; i < 29; i++) {
             temp = thermalTemp(i);
-            if (!temp.contains("0.0")) {
+            if (temp!=null && !temp.contains("0.0")) {
                 type = thermalType(i);
                 if (type != null) {
                     thermalList.add(new ThermalModel(temp, type));
@@ -363,7 +363,7 @@ public class BuildInfo {
         String temp, type;
         for (int i = 0; i < 29; i++) {
             temp = thermalTemp(i);
-            if (!temp.contains("0.0")) {
+            if (temp!=null && !temp.contains("0.0")) {
                 type = thermalType(i);
                 if (type != null) {
                     stringBuilder.append(type).append(" : ").append(temp).append("\n");
