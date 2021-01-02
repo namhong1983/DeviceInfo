@@ -434,9 +434,10 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
         if (tag.contains("flashlight"))
             flashOff();
         if (isSpeaker) {
-            if (mediaPlayer.isPlaying())
+            if (mediaPlayer != null && mediaPlayer.isPlaying()) {
                 mediaPlayer.stop();
-            mediaPlayer.release();
+                mediaPlayer.release();
+            }
             audioManager.setMode(AudioManager.MODE_NORMAL);
             mediaPlayer = null;
             audioManager = null;

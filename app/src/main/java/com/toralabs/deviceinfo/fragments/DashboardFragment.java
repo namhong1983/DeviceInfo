@@ -179,7 +179,7 @@ public class DashboardFragment extends Fragment implements Handler.Callback, Nat
             return;
         getActivity().registerReceiver(broadcastReceiver, intentFilter);
     }
-
+    
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

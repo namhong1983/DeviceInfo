@@ -188,7 +188,7 @@ public class AppsFragment extends Fragment implements MenuItem.OnActionExpandLis
     }
 
     public void allApps() {
-        if (list.size() == packagelist.size()) {
+        if (list != null && list.size() == packagelist.size()) {
             appListAdapter.filteredList(list);
         }
     }
