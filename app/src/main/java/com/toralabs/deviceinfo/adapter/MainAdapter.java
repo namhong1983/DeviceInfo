@@ -20,6 +20,7 @@ import com.toralabs.deviceinfo.fragments.DeviceFragment;
 import com.toralabs.deviceinfo.fragments.DisplayFragment;
 import com.toralabs.deviceinfo.fragments.InputFragment;
 import com.toralabs.deviceinfo.fragments.MemoryFragment;
+import com.toralabs.deviceinfo.fragments.NetworkFragment;
 import com.toralabs.deviceinfo.fragments.SensorsFragment;
 import com.toralabs.deviceinfo.fragments.SystemFragment;
 import com.toralabs.deviceinfo.fragments.TestsFragment;
@@ -80,6 +81,9 @@ public class MainAdapter extends FragmentStatePagerAdapter {
             case 13:
                 fragment = new TestsFragment();
                 break;
+            case 14:
+                fragment = new NetworkFragment();
+                break;
         }
         assert fragment != null;
         return fragment;
@@ -87,7 +91,7 @@ public class MainAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public int getCount() {
-        return 14;
+        return 15;
     }
 
     @Nullable
@@ -136,6 +140,9 @@ public class MainAdapter extends FragmentStatePagerAdapter {
                 break;
             case 13:
                 title = context.getResources().getString(R.string.tests);
+                break;
+            case 14:
+                title = context.getResources().getString(R.string.network);
                 break;
         }
         return title;
