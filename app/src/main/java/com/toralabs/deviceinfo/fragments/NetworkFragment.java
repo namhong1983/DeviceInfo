@@ -1,12 +1,10 @@
 package com.toralabs.deviceinfo.fragments;
 
-import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.DhcpInfo;
@@ -25,7 +23,6 @@ import android.provider.Settings;
 import android.telephony.CellSignalStrength;
 import android.telephony.PhoneStateListener;
 import android.telephony.SignalStrength;
-import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
 import android.view.LayoutInflater;
@@ -41,7 +38,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
-import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.widget.NestedScrollView;
 import androidx.fragment.app.Fragment;
@@ -682,28 +678,8 @@ public class NetworkFragment extends Fragment implements View.OnClickListener, H
         uiHandler.sendMessage(message);
     }
 
-    // call only when READ_PHONE_STATE granted ....
-    public void sim1Details() {
-        if (Build.VERSION.SDK_INT > 22) {
-            SubscriptionManager manager = (SubscriptionManager) getContext().getSystemService(Context.TELEPHONY_SUBSCRIPTION_SERVICE);
-            if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.READ_PHONE_STATE) == PackageManager.PERMISSION_GRANTED) {
-                List<SubscriptionInfo> info = manager.getActiveSubscriptionInfoList();
-                if (info != null) {
+    // Write methods for All the Sim Details available in the device....
 
-                } else {
-//                    deviceList.add(new ClickableModel(context.getResources().getString(R.string.netop), context.getResources().getString(R.string.nosim), false));
-                }
-            } else {
-//                netOperator = context.getResources().getString(R.string.requires_per);
-//                deviceList.add(new ClickableModel(context.getResources().getString(R.string.netop), netOperator, true));
-            }
-        }
-    }
-
-    //call only when READ_PHONE_STATE granted ....
-    public void sim2Details() {
-
-    }
 
     public void defaultsInfo() {
         if (simAvailable && Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP_MR1) {
