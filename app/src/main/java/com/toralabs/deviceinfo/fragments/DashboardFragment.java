@@ -72,7 +72,7 @@ public class DashboardFragment extends Fragment implements Handler.Callback, Nat
     ScrollView scrollview;
     long totalRAM, usedRAM, freeRam, totalSys, usedSys, totalInternal, usedInternal, totalExternal, usedExternal;
     int color, coresCount, sensorCount, appCount, count = 0;
-    String voltage, temp, level, status;
+    String voltage = " ", temp = " ", level = " ", status = " ";
     BroadcastReceiver broadcastReceiver;
     IntentFilter intentFilter;
     Handler broadcastHandler, cpuCoreHandler, ramHandler;
@@ -179,7 +179,7 @@ public class DashboardFragment extends Fragment implements Handler.Callback, Nat
             return;
         getActivity().registerReceiver(broadcastReceiver, intentFilter);
     }
-    
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

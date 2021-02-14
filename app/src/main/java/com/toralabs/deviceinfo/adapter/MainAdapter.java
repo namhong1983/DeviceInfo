@@ -6,7 +6,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
 import com.toralabs.deviceinfo.R;
@@ -73,16 +72,16 @@ public class MainAdapter extends FragmentStatePagerAdapter {
                 fragment = new CodecsFragment();
                 break;
             case 11:
-                fragment = new InputFragment();
+                fragment = new NetworkFragment();
                 break;
             case 12:
-                fragment = new AppsFragment();
+                fragment = new InputFragment();
                 break;
             case 13:
-                fragment = new TestsFragment();
+                fragment = new AppsFragment();
                 break;
             case 14:
-                fragment = new NetworkFragment();
+                fragment = new TestsFragment();
                 break;
         }
         assert fragment != null;
@@ -133,16 +132,16 @@ public class MainAdapter extends FragmentStatePagerAdapter {
                 title = context.getResources().getString(R.string.codecs);
                 break;
             case 11:
-                title = context.getResources().getString(R.string.input);
+                title = context.getResources().getString(R.string.network);
                 break;
             case 12:
-                title = context.getResources().getString(R.string.apps);
+                title = context.getResources().getString(R.string.input);
                 break;
             case 13:
-                title = context.getResources().getString(R.string.tests);
+                title = context.getResources().getString(R.string.apps);
                 break;
             case 14:
-                title = context.getResources().getString(R.string.network);
+                title = context.getResources().getString(R.string.tests);
                 break;
         }
         return title;

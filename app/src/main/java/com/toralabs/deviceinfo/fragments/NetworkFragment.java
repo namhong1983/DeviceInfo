@@ -1,10 +1,12 @@
 package com.toralabs.deviceinfo.fragments;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.DhcpInfo;
@@ -30,6 +32,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
@@ -38,6 +41,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
+import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.widget.NestedScrollView;
 import androidx.fragment.app.Fragment;
@@ -48,6 +52,7 @@ import com.toralabs.deviceinfo.R;
 import com.toralabs.deviceinfo.adapter.SimpleAdapter;
 import com.toralabs.deviceinfo.impClasses.BuildInfo;
 import com.toralabs.deviceinfo.menuItems.Preferences;
+import com.toralabs.deviceinfo.models.ClickableModel;
 import com.toralabs.deviceinfo.models.SimpleModel;
 
 import java.lang.reflect.InvocationTargetException;
@@ -66,10 +71,11 @@ public class NetworkFragment extends Fragment implements View.OnClickListener, H
     Handler workerHandler, uiHandler;
     ImageView imgNetwork;
     ProgressBar progressBar;
+    Button btnAllow;
     TextView txtNet, txtProvider, txtDbm, txtWifi, txtMobile, txtSim1, txtSim2;
     RecyclerView recyclerWifi, recyclerMobile, recyclerSim1, recyclerSim2, recyclerDefault;
     CardView cardNetwork;
-    RelativeLayout cardWifi, cardMobile, cardDefaults, cardSim1, cardSim2, relNetwork;
+    RelativeLayout cardWifi, cardMobile, cardDefaults, cardSim1, cardSim2, relNetwork, cardSimPermission;
     NestedScrollView nestedScroll;
     TelephonyManager telephonyManager;
     ConnectivityManager connectivityManager;
@@ -84,6 +90,7 @@ public class NetworkFragment extends Fragment implements View.OnClickListener, H
     String simInfo, wifiStatus, mobileStatus, dualSim, phoneType, bssid, dhcpServer, dhcpLease, gatewayWifi, subnetMaskWifi, dns1, dns2, ipAddress, macAddress, interFaceWifi = null, directSupport, bandSupport, linkSpeed, signalStrength, frequency, channel;
     String ipv4, ipv6, subnetMobile, networkG;
     int level, color, phoneCount, asu;
+    int READ_PHONE_STATE = 1001;
     ConnectivityManager.NetworkCallback networkCallback;
     NetworkCapabilities networkCapabilities;
     NetworkRequest networkRequestCell, networkRequestWifi;
@@ -93,7 +100,8 @@ public class NetworkFragment extends Fragment implements View.OnClickListener, H
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        preferences = new Preferences(getContext());
+        if (getContext() != null)
+            preferences = new Preferences(getContext());
         darkMode = preferences.getMode();
         buildInfo = new BuildInfo(getContext());
         color = Color.parseColor(preferences.getCircleColor());
@@ -204,7 +212,16 @@ public class NetworkFragment extends Fragment implements View.OnClickListener, H
         txtMobile = view.findViewById(R.id.txtMobile);
         txtSim1 = view.findViewById(R.id.txtSim1);
         txtSim2 = view.findViewById(R.id.txtSim2);
+        cardSimPermission = view.findViewById(R.id.cardSimPermission);
+        btnAllow = view.findViewById(R.id.btnAllow);
         relNetwork.setOnClickListener(this);
+        btnAllow.setOnClickListener(this);
+        if (getContext() != null && ContextCompat.checkSelfPermission(getContext(), Manifest.permission.READ_PHONE_STATE) == PackageManager.PERMISSION_GRANTED) {
+            cardSimPermission.setVisibility(View.GONE);
+            btnAllow.setVisibility(View.GONE);
+        } else {
+            getSimInfo();
+        }
         return view;
     }
 
@@ -260,12 +277,14 @@ public class NetworkFragment extends Fragment implements View.OnClickListener, H
 
     @Override
     public void onClick(View v) {
-        if(v.getId()==R.id.relNetwork){
+        if (v.getId() == R.id.relNetwork) {
             try {
                 Intent intent = new Intent(Settings.ACTION_WIRELESS_SETTINGS);
                 startActivity(intent);
             } catch (Exception e) {
             }
+        } else if (v.getId() == R.id.btnAllow) {
+            checkPhonePermissions();
         }
     }
 
@@ -287,19 +306,6 @@ public class NetworkFragment extends Fragment implements View.OnClickListener, H
                     txtNet.setTextColor(color);
                     txtProvider.setTextColor(color);
                     txtDbm.setTextColor(color);
-                    if (simAvailable && android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP_MR1 && defaultsList.size() != 0) {
-                        cardDefaults.setVisibility(View.VISIBLE);
-                        simpleAdapterDefault = new SimpleAdapter(defaultsList, getContext(), color);
-                        recyclerDefault.setLayoutManager(new LinearLayoutManager(getContext()));
-                        recyclerDefault.setNestedScrollingEnabled(false);
-                        recyclerDefault.setAdapter(simpleAdapterDefault);
-                        cardSim1.setVisibility(View.VISIBLE);
-                        simpleAdapterSim1 = new SimpleAdapter(sim1List, getContext(), color);
-                        recyclerSim1.setLayoutManager(new LinearLayoutManager(getContext()));
-                        recyclerSim1.setNestedScrollingEnabled(false);
-                        recyclerSim1.setAdapter(simpleAdapterSim1);
-                    }
-                    break;
                 case 1:
                     type = String.valueOf(telephonyManager.getNetworkType());
                     networkG = buildInfo.getNetworkG(Integer.parseInt(type));
@@ -680,7 +686,6 @@ public class NetworkFragment extends Fragment implements View.OnClickListener, H
 
     // Write methods for All the Sim Details available in the device....
 
-
     public void defaultsInfo() {
         if (simAvailable && Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP_MR1) {
             try {
@@ -787,4 +792,46 @@ public class NetworkFragment extends Fragment implements View.OnClickListener, H
         }
     }
 
+    private void checkPhonePermissions() {
+        if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.READ_PHONE_STATE}, READ_PHONE_STATE);
+        }
+    }
+
+    private void getSimInfo(){
+        if (simAvailable && android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP_MR1 && defaultsList.size() != 0) {
+            cardDefaults.setVisibility(View.VISIBLE);
+            simpleAdapterDefault = new SimpleAdapter(defaultsList, getContext(), color);
+            recyclerDefault.setLayoutManager(new LinearLayoutManager(getContext()));
+            recyclerDefault.setNestedScrollingEnabled(false);
+            recyclerDefault.setAdapter(simpleAdapterDefault);
+            cardSim1.setVisibility(View.VISIBLE);
+            simpleAdapterSim1 = new SimpleAdapter(sim1List, getContext(), color);
+            recyclerSim1.setLayoutManager(new LinearLayoutManager(getContext()));
+            recyclerSim1.setNestedScrollingEnabled(false);
+            recyclerSim1.setAdapter(simpleAdapterSim1);
+        }
+        if (Build.VERSION.SDK_INT > 22) {
+            manager = (SubscriptionManager) context.getSystemService(Context.TELEPHONY_SUBSCRIPTION_SERVICE);
+            if (ActivityCompat.checkSelfPermission(context, Manifest.permission.READ_PHONE_STATE) == PackageManager.PERMISSION_GRANTED) {
+                info = manager.getActiveSubscriptionInfoList();
+                if (info != null) {
+                    for (int i = 0; i < info.size(); i++) {
+                        carrierName.add((String) info.get(i).getCarrierName());
+                    }
+                    for (int i = 0; i < info.size(); i++) {
+                        deviceList.add(new ClickableModel(context.getResources().getString(R.string.netop), carrierName.get(i), false));
+                    }
+                } else {
+                    deviceList.add(new ClickableModel(context.getResources().getString(R.string.netop), context.getResources().getString(R.string.nosim), false));
+                }
+            } else {
+                netOperator = context.getResources().getString(R.string.requires_per);
+                deviceList.add(new ClickableModel(context.getResources().getString(R.string.netop), netOperator, true));
+            }
+        } else {
+            netOperator = telephonyManager.getNetworkOperatorName();
+            deviceList.add(new ClickableModel(context.getResources().getString(R.string.netop), netOperator, false));
+        }
+    }
 }

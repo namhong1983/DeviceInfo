@@ -56,7 +56,7 @@
                     android:layout_marginRight="7.2dp"
                     android:layout_marginBottom="5dp"
                     android:background="@color/bg"
-                    app:elevation="5dp">
+                    android:elevation="5dp">
 
                     <ImageView
                         android:id="@+id/img_company"

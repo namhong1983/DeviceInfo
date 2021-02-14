@@ -348,7 +348,7 @@ public class BuildInfo {
         String temp, type;
         for (int i = 0; i < 29; i++) {
             temp = thermalTemp(i);
-            if (temp!=null && !temp.contains("0.0")) {
+            if (temp != null && !temp.contains("0.0")) {
                 type = thermalType(i);
                 if (type != null) {
                     thermalList.add(new ThermalModel(temp, type));
@@ -363,7 +363,7 @@ public class BuildInfo {
         String temp, type;
         for (int i = 0; i < 29; i++) {
             temp = thermalTemp(i);
-            if (temp!=null && !temp.contains("0.0")) {
+            if (temp != null && !temp.contains("0.0")) {
                 type = thermalType(i);
                 if (type != null) {
                     stringBuilder.append(type).append(" : ").append(temp).append("\n");
@@ -435,17 +435,25 @@ public class BuildInfo {
 
     // use this for total storage of system,internal and external memory
     public long getTotalStorageInfo(String path) {
-        StatFs statFs = new StatFs(path);
-        long t;
-        t = statFs.getTotalBytes();
+        long t = 10;
+        try {
+            StatFs statFs = new StatFs(path);
+            t = statFs.getTotalBytes();
+        } catch (Exception e) {
+            System.out.println(e.getMessage() + " " + e.getCause());
+        }
         return t;
     }
 
     // use this for used storage of system,internal and external memory
     public long getUsedStorageInfo(String path) {
-        StatFs statFs = new StatFs(path);
-        long u;
-        u = statFs.getTotalBytes() - statFs.getAvailableBytes();
+        long u = 10;
+        try {
+            StatFs statFs = new StatFs(path);
+            u = statFs.getTotalBytes() - statFs.getAvailableBytes();
+        } catch (Exception e) {
+            System.out.println(e.getMessage() + " " + e.getCause());
+        }
         return u;
     }
 

@@ -376,6 +376,8 @@
     <string name="ramtype">RAM Type</string>
     <string name="bandwidth">Bandwidth</string>
     <string name="channels">Channels</string>
+    <string name="want_sim_info">Want SIM Info ? Allow us to detect your SIM.</string>
+    <string name="allow">Allow</string>
     <string-array name="applist">
         <item>All Apps</item>
         <item>System Apps</item>

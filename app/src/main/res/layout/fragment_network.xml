@@ -64,7 +64,7 @@
                         android:layout_marginRight="7.2dp"
                         android:layout_marginBottom="5dp"
                         android:background="@color/bg"
-                        app:elevation="5dp">
+                        android:elevation="5dp">
 
                         <ImageView
                             android:id="@+id/imgNetwork"
@@ -175,10 +175,47 @@
                     </RelativeLayout>
 
                     <RelativeLayout
-                        android:id="@+id/cardDefault"
+                        android:id="@+id/cardSimPermission"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/cardMobile"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="2dp"
+                        android:layout_marginBottom="4dp"
+                        android:background="@color/bg"
+                        android:padding="10dp">
+
+                        <TextView
+                            android:id="@+id/txtSimStat"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:text="@string/want_sim_info"
+                            android:textAlignment="center"
+                            android:textColor="@color/textgrey"
+                            android:textSize="17sp" />
+
+                        <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/txtSimStat"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:minHeight="0dp"
+                            android:padding="10dp"
+                            android:id="@+id/btnAllow"
+                            android:text="@string/allow"
+                            android:textAllCaps="false"
+                            android:textColor="@color/white" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/cardDefault"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/cardSimPermission"
                         android:layout_marginLeft="2dp"
                         android:layout_marginTop="5dp"
                         android:layout_marginRight="2dp"

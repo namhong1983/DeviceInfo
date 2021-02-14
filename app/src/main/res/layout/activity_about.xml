@@ -186,14 +186,6 @@
                         android:src="@drawable/ic_linkedin" />
 
                     <ImageView
-                        android:id="@+id/imgGithub"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_margin="8dp"
-                        android:contentDescription="@null"
-                        android:src="@drawable/ic_github" />
-
-                    <ImageView
                         android:id="@+id/imgMail"
                         android:layout_width="40dp"
                         android:layout_height="40dp"

@@ -38,7 +38,7 @@ public class AboutActivity extends AppCompatActivity implements View.OnClickList
     NativeAdLayout nativeAdLayout;
     NativeAd nativeAd;
     Button btnRemoveAds, btnTranslate;
-    ImageView imgInsta, imgLinked, imgGithub, imgMail;
+    ImageView imgInsta, imgLinked, imgMail;
     TextView txtVersion, txtPackage;
     Preferences preferences;
     RemoveAds removeAds;
@@ -90,7 +90,6 @@ public class AboutActivity extends AppCompatActivity implements View.OnClickList
         btnTranslate = findViewById(R.id.btnTranslate);
         imgInsta = findViewById(R.id.imgInsta);
         imgLinked = findViewById(R.id.imgLinked);
-        imgGithub = findViewById(R.id.imgGithub);
         imgMail = findViewById(R.id.imgMail);
         btnRemoveAds.setTextColor(color);
         btnTranslate.setTextColor(color);
@@ -99,7 +98,6 @@ public class AboutActivity extends AppCompatActivity implements View.OnClickList
         btnRemoveAds.setOnClickListener(this);
         btnTranslate.setOnClickListener(this);
         imgMail.setOnClickListener(this);
-        imgGithub.setOnClickListener(this);
         imgLinked.setOnClickListener(this);
         imgInsta.setOnClickListener(this);
         txtVersion.setText(BuildConfig.VERSION_NAME + " (" + BuildConfig.VERSION_CODE + ")");
@@ -118,8 +116,6 @@ public class AboutActivity extends AppCompatActivity implements View.OnClickList
             startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.instagram.com/mrudul.tora/")));
         } else if (id == R.id.imgLinked) {
             startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.linkedin.com/in/mrudul-tora-571004166/")));
-        } else if (id == R.id.imgGithub) {
-            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/mrudultora")));
         } else if (id == R.id.btnTranslate || id == R.id.imgMail) {
             Intent contact_intent = new Intent(Intent.ACTION_SENDTO);
             contact_intent.putExtra(Intent.EXTRA_EMAIL, new String[]{"toralabs24@gmail.com"});

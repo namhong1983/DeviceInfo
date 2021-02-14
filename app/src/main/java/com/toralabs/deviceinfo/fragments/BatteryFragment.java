@@ -232,12 +232,16 @@ public class BatteryFragment extends Fragment implements NativeAdListener {
             getActivity().runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    txt_level.setText(batterylevel);
-                    txt_status.setText(status);
-                    simpleAdapter.update(1, status);
-                    simpleAdapter.update(2, batterylevel);
-                    simpleAdapter.update(3, voltage);
-                    simpleAdapter.update(4, powersource);
+                    if (batterylevel != null) {
+                        txt_level.setText(batterylevel);
+                        simpleAdapter.update(2, batterylevel);
+                    }
+                    if (status != null) {
+                        txt_status.setText(status);
+                        simpleAdapter.update(1, status);
+                    }
+                    if (voltage != null) simpleAdapter.update(3, voltage);
+                    if (powersource != null) simpleAdapter.update(4, powersource);
                 }
             });
         }
