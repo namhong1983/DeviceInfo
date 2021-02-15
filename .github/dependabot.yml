@@ -9,6 +9,6 @@ updates:
     directory: "/app" # Location of package manifests
     schedule:
       interval: "daily"
-     reviewers:
+    reviewers:
       - "mrudultora"
 
