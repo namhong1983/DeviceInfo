@@ -46,6 +46,6 @@ dependencies {
     implementation 'com.ogaclejapan.smarttablayout:library:2.0.0@aar'
     implementation 'com.github.lzyzsd:circleprogress:1.2.1'
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
-    implementation 'androidx.biometric:biometric:1.0.1'
+    implementation 'androidx.biometric:biometric:1.1.0'
     implementation 'com.google.android.gms:play-services-ads-identifier:17.0.0'
 }
