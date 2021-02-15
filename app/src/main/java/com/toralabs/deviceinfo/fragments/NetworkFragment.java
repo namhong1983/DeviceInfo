@@ -811,27 +811,27 @@ public class NetworkFragment extends Fragment implements View.OnClickListener, H
             recyclerSim1.setNestedScrollingEnabled(false);
             recyclerSim1.setAdapter(simpleAdapterSim1);
         }
-        if (Build.VERSION.SDK_INT > 22) {
-            manager = (SubscriptionManager) context.getSystemService(Context.TELEPHONY_SUBSCRIPTION_SERVICE);
-            if (ActivityCompat.checkSelfPermission(context, Manifest.permission.READ_PHONE_STATE) == PackageManager.PERMISSION_GRANTED) {
-                info = manager.getActiveSubscriptionInfoList();
-                if (info != null) {
-                    for (int i = 0; i < info.size(); i++) {
-                        carrierName.add((String) info.get(i).getCarrierName());
-                    }
-                    for (int i = 0; i < info.size(); i++) {
-                        deviceList.add(new ClickableModel(context.getResources().getString(R.string.netop), carrierName.get(i), false));
-                    }
-                } else {
-                    deviceList.add(new ClickableModel(context.getResources().getString(R.string.netop), context.getResources().getString(R.string.nosim), false));
-                }
-            } else {
-                netOperator = context.getResources().getString(R.string.requires_per);
-                deviceList.add(new ClickableModel(context.getResources().getString(R.string.netop), netOperator, true));
-            }
-        } else {
-            netOperator = telephonyManager.getNetworkOperatorName();
-            deviceList.add(new ClickableModel(context.getResources().getString(R.string.netop), netOperator, false));
-        }
+//        if (Build.VERSION.SDK_INT > 22) {
+//            manager = (SubscriptionManager) context.getSystemService(Context.TELEPHONY_SUBSCRIPTION_SERVICE);
+//            if (ActivityCompat.checkSelfPermission(context, Manifest.permission.READ_PHONE_STATE) == PackageManager.PERMISSION_GRANTED) {
+//                info = manager.getActiveSubscriptionInfoList();
+//                if (info != null) {
+//                    for (int i = 0; i < info.size(); i++) {
+//                        carrierName.add((String) info.get(i).getCarrierName());
+//                    }
+//                    for (int i = 0; i < info.size(); i++) {
+//                        deviceList.add(new ClickableModel(context.getResources().getString(R.string.netop), carrierName.get(i), false));
+//                    }
+//                } else {
+//                    deviceList.add(new ClickableModel(context.getResources().getString(R.string.netop), context.getResources().getString(R.string.nosim), false));
+//                }
+//            } else {
+//                netOperator = context.getResources().getString(R.string.requires_per);
+//                deviceList.add(new ClickableModel(context.getResources().getString(R.string.netop), netOperator, true));
+//            }
+//        } else {
+//            netOperator = telephonyManager.getNetworkOperatorName();
+//            deviceList.add(new ClickableModel(context.getResources().getString(R.string.netop), netOperator, false));
+//        }
     }
 }
