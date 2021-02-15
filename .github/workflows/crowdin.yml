@@ -18,3 +18,6 @@ jobs:
       with:
         upload_translations: true
         download_translations: true
+      env:
+        CROWDIN_PROJECT_ID: 441714
+        CROWDIN_PERSONAL_TOKEN: b56afc7b4872a971c819ae49f409bba5fe79603b4b0dadc0178ff795e59bbdf93c48dc8602fbce1c
