@@ -1,3 +1,4 @@
+<a title="Crowdin" target="_blank" href="https://crowdin.com/project/deviceinfo" style="text-align:center"><img src="https://badges.crowdin.net/deviceinfo/localized.svg"></a>
 # DeviceInfo
 Device Info is a simple and very user-friendly Android application that gives you complete and detailed information about your mobile device like CPU, RAM, OS, Sensors, Storage, Battery, SIM, Bluetooth, Installed Apps, System Apps, Display, Camera, Thermal, Codecs, Inputs with best user-interface.
 ## Copyright and License
