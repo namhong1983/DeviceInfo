@@ -343,7 +343,7 @@
     <string name="total">Total</string>
     <string name="about">About</string>
     <string name="translate">Translate</string>
-    <string name="app_desc">Device Info is a simple and powerful Android application which gives you a complete Software and Hardware information about your Mobile device with advanced user-interface.\nIf possible help me in translating the app in your local language. Just Mail me.</string>
+    <string name="app_desc">Device Info is a simple and powerful Android application which gives you a complete Software and Hardware information about your Mobile device with advanced user-interface.\nIf possible help me in translating the app in your local language. Tap on translate and you will be redirected to Crowdin website. Login there and start contributing.</string>
     <string name="passionate">Passionate Android Developer. Connect with me.</string>
     <string name="info_know">Info you must Know about Android !</string>
     <string name="whatisroot">What is Root ?</string>
@@ -378,13 +378,10 @@
     <string name="channels">Channels</string>
     <string name="want_sim_info">Want SIM Info ? Allow us to detect your SIM.</string>
     <string name="allow">Allow</string>
-    <string-array name="applist">
-        <item>All Apps</item>
-        <item>System Apps</item>
-        <item>Installed Apps</item>
-    </string-array>
+    <string name="choose_language">Choose Language</string>
+    <string name="confirm">Confirm</string>
 
-    // content description strings
+    <!--   content description strings -->
     <string name="desc_mode">Mode Type Image</string>
     <string name="desc_theme">Theme Color Image</string>
     <string name="desc_temp">Mode Type Image</string>
