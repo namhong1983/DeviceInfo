@@ -46,6 +46,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.toralabs.deviceinfo.R;
+import com.toralabs.deviceinfo.menuItems.ChangeLocale;
 import com.toralabs.deviceinfo.menuItems.Preferences;
 import com.toralabs.deviceinfo.menuItems.ThemeConstant;
 
@@ -86,11 +87,14 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
     int cameraId = 0;
     float x, y, z, lastX, lastY, lastZ;
     long lastUpdate = 0, diffTime;
+    ChangeLocale changeLocale;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         preferences = new Preferences(TestActivity.this);
         themeNo = preferences.getThemeNo();
+        changeLocale=new ChangeLocale(TestActivity.this);
+        changeLocale.setLocale(preferences.getLocalePref());
         themeConstant = new ThemeConstant(themeNo);
         if (themeNo == 0) {
             setTheme(R.style.AppTheme);

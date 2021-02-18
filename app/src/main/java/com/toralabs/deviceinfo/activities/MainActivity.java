@@ -35,6 +35,7 @@ import com.toralabs.deviceinfo.R;
 import com.toralabs.deviceinfo.adapter.MainAdapter;
 import com.toralabs.deviceinfo.impClasses.BuildInfo;
 import com.toralabs.deviceinfo.impClasses.ExportThread;
+import com.toralabs.deviceinfo.menuItems.ChangeLocale;
 import com.toralabs.deviceinfo.menuItems.CustomSnackBar;
 import com.toralabs.deviceinfo.menuItems.FullScreenAds;
 import com.toralabs.deviceinfo.menuItems.Preferences;
@@ -66,6 +67,7 @@ public class MainActivity extends AppCompatActivity implements Runnable, ViewPag
     String color, darkIndicator;
     boolean flag;
     BuildInfo buildInfo;
+    ChangeLocale changeLocale;
     ThemeConstant themeConstant;
     HandlerThread intentThread = new HandlerThread("intentThread");
     Handler handler;
@@ -95,6 +97,8 @@ public class MainActivity extends AppCompatActivity implements Runnable, ViewPag
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         preferences = new Preferences(MainActivity.this);
+        changeLocale=new ChangeLocale(MainActivity.this);
+        changeLocale.setLocale(preferences.getLocalePref());
         fullScreenAds = new FullScreenAds(MainActivity.this);
         AudienceNetworkAds.initialize(this);
         themeColor = Color.parseColor(preferences.getCircleColor());

@@ -132,10 +132,47 @@
             android:textSize="15sp" />
 
         <RelativeLayout
-            android:id="@+id/rel_temp"
+            android:id="@+id/rel_language"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/txt_general"
+            android:background="?android:attr/selectableItemBackground"
+            android:padding="10dp">
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:contentDescription="@string/desc_temp"
+                android:src="@drawable/ic_language"
+                app:tint="@color/darkgrey" />
+
+            <TextView
+                android:id="@+id/lang"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="52dp"
+                android:text="@string/lang"
+                android:textColor="@color/textcolor"
+                android:textSize="16.2sp" />
+
+            <TextView
+                android:id="@+id/text_lang"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/lang"
+                android:layout_marginStart="52dp"
+                android:layout_marginTop="2dp"
+                android:textColor="@color/darkgrey"
+                android:textSize="15sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rel_temp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/rel_language"
             android:background="?android:attr/selectableItemBackground"
             android:padding="10dp">
 

@@ -16,6 +16,7 @@ import com.facebook.ads.NativeAdLayout;
 import com.facebook.ads.NativeAdListener;
 import com.toralabs.deviceinfo.R;
 import com.toralabs.deviceinfo.impClasses.NativeAdInflate;
+import com.toralabs.deviceinfo.menuItems.ChangeLocale;
 import com.toralabs.deviceinfo.menuItems.Preferences;
 import com.toralabs.deviceinfo.menuItems.ThemeConstant;
 
@@ -28,11 +29,14 @@ public class ListFeaturesActivity extends AppCompatActivity implements NativeAdL
     boolean bool;
     int themeNo, color;
     String name = "";
+    ChangeLocale changeLocale;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         preferences = new Preferences(ListFeaturesActivity.this);
+        changeLocale=new ChangeLocale(ListFeaturesActivity.this);
+        changeLocale.setLocale(preferences.getLocalePref());
         color = Color.parseColor(preferences.getCircleColor());
         themeNo = preferences.getThemeNo();
         themeConstant = new ThemeConstant(themeNo);
