@@ -25,7 +25,7 @@ jobs:
         pull_request_title: "New Crowdin translations to review and merge"
 #         project_id: 441714
 #         token: b56afc7b4872a971c819ae49f409bba5fe79603b4b0dadc0178ff795e59bbdf93c48dc8602fbce1c
-      env:
+#       env:
         CROWDIN_PROJECT_ID: ${{ secrets.CROWDIN_PROJECT_ID }}
         CROWDIN_PERSONAL_TOKEN: ${{ secrets.CROWDIN_PERSONAL_TOKEN }}
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
