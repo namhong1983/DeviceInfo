@@ -23,7 +23,7 @@ jobs:
         skip_untranslated_files: false
         commit_message: 'New Crowdin translations by Github Action'
         pull_request_title: 'New Crowdin translations to review and merge'
-
+      env:
         project_id: ${{ secrets.CROWDIN_PROJECT_ID }}
         token: ${{ secrets.CROWDIN_PERSONAL_TOKEN }}
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
