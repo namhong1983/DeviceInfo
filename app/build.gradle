@@ -42,7 +42,7 @@ dependencies {
     implementation 'com.android.billingclient:billing:3.0.2'
     implementation 'com.facebook.android:audience-network-sdk:6.2.1'
     implementation 'petrov.kristiyan:colorpicker-library:1.1.10'
-    implementation 'com.google.android.gms:play-services-base:17.5.0'
+    implementation 'com.google.android.gms:play-services-base:17.6.0'
     implementation 'com.ogaclejapan.smarttablayout:library:2.0.0@aar'
     implementation 'com.github.lzyzsd:circleprogress:1.2.1'
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
