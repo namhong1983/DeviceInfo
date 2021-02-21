@@ -3,7 +3,9 @@ package com.toralabs.deviceinfo.activities;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.ActivityOptions;
+import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
@@ -31,6 +33,7 @@ import androidx.core.graphics.drawable.DrawableCompat;
 
 import com.toralabs.deviceinfo.R;
 import com.toralabs.deviceinfo.impClasses.ExportThread;
+import com.toralabs.deviceinfo.menuItems.ChangeLocale;
 import com.toralabs.deviceinfo.menuItems.CustomSnackBar;
 import com.toralabs.deviceinfo.menuItems.Preferences;
 import com.toralabs.deviceinfo.menuItems.RemoveAds;
@@ -51,11 +54,11 @@ import petrov.kristiyan.colorpicker.ColorPicker;
 public class SettingsActivity extends AppCompatActivity implements View.OnClickListener, Runnable {
     HandlerThread intentThread = new HandlerThread("intentThread");
     Handler intentHandler;
-    RelativeLayout rel_theme, rel_color, rel_temp, rel_export, rel_rate, rel_removeads, rel_feedback, rel_app_version;
+    RelativeLayout rel_theme, rel_color, rel_temp, rel_export, rel_rate, rel_removeads, rel_feedback, rel_app_version, rel_language;
     ScrollView rel_settings;
     Preferences preferences;
     RemoveAds removeAds;
-    TextView text_themename, text_version, text_temp;
+    TextView text_themename, text_version, text_temp, text_lang;
     ThemeConstant themeConstant;
     boolean bool;
     int themeNo, coresCount, drawableId;
@@ -65,10 +68,11 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
     String voltage, temp, level, status, memory, bandwidth, channel, cpuFamily, process;
     int sensorCount, appCount;
     int logoId;
+    ChangeLocale changeLocale;
     String[] wide = new String[9];
     String[] clearkey = new String[2];
     String processorName, family, machine;
-    int color;
+    int color, pos;
     ArrayList<String> colors = new ArrayList<>();
     String URL_STORE = "https://play.google.com/store/apps/details?id=com.toralabs.deviceinfo";
     ArrayList<CpuFreqModel> cpuCoresList = new ArrayList<>();
@@ -86,6 +90,7 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         preferences = new Preferences(SettingsActivity.this);
+        changeLocale=new ChangeLocale(SettingsActivity.this);
         color = Color.parseColor(preferences.getCircleColor());
         themeNo = preferences.getThemeNo();
         themeConstant = new ThemeConstant(themeNo);
@@ -94,6 +99,7 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
         } else {
             setTheme(themeConstant.themeChooser());
         }
+        changeLocale.setLocale(preferences.getLocalePref());
         Drawable unwrappedDrawable = AppCompatResources.getDrawable(this, R.drawable.circle);
         Drawable wrappedDrawable = null;
         if (unwrappedDrawable != null) {
@@ -141,9 +147,11 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
         rel_theme = findViewById(R.id.rel_theme);
         rel_feedback = findViewById(R.id.rel_feedback);
         rel_app_version = findViewById(R.id.rel_app_version);
+        rel_language = findViewById(R.id.rel_language);
         text_version = findViewById(R.id.text_version);
         text_themename = findViewById(R.id.text_themename);
         text_temp = findViewById(R.id.text_temp);
+        text_lang = findViewById(R.id.text_lang);
         rel_settings = findViewById(R.id.rel_settings);
 
         rel_color.setOnClickListener(this);
@@ -154,6 +162,8 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
         rel_theme.setOnClickListener(this);
         rel_feedback.setOnClickListener(this);
         rel_app_version.setOnClickListener(this);
+        rel_language.setOnClickListener(this);
+
         bool = preferences.getPurchasePref();
         if (preferences.getMode()) {
             flag = true;
@@ -163,6 +173,14 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
             text_temp.setText(getResources().getString(R.string.fahren));
         }
         text_version.setText(com.toralabs.deviceinfo.BuildConfig.VERSION_NAME);
+        String[] langArray = getResources().getStringArray(R.array.languageCodeList);
+        for (int i = 0; i < langArray.length; i++) {
+            if (langArray[i].equals(preferences.getLocalePref())) {
+                pos = i;
+                break;
+            }
+        }
+        text_lang.setText(getResources().getStringArray(R.array.languageList)[pos]);
     }
 
     @Override
@@ -187,6 +205,8 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
             showDialogBox(1);
         } else if (id == R.id.rel_temp) {
             showDialogBox(2);
+        } else if (id == R.id.rel_language) {
+            chooseLanguageDialog();
         } else if (id == R.id.rel_removeads) {
             if (bool) {
                 CustomSnackBar customSnackBar = new CustomSnackBar(SettingsActivity.this, rel_settings);
@@ -210,7 +230,7 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
         }
     }
 
-    public void export() {
+    private void export() {
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
             ExportThread exportThread = new ExportThread(SettingsActivity.this, rel_settings, color);
             exportThread.start();
@@ -219,7 +239,7 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
         }
     }
 
-    public void showColorDialog() {
+    private void showColorDialog() {
         final ColorPicker colorPicker = new ColorPicker(SettingsActivity.this);
         colorPicker.setColors(colors).setColumns(5).setDefaultColorButton(Color.parseColor(preferences.getCircleColor())).setRoundColorButton(true).setOnChooseColorListener(new ColorPicker.OnChooseColorListener() {
             @Override
@@ -236,7 +256,7 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
         }).show();
     }
 
-    public void showDialogBox(final int id) {
+    private void showDialogBox(final int id) {
         final Dialog dialog = new Dialog(SettingsActivity.this);
         Button btn_cancel;
         RadioButton radio1, radio2;
@@ -431,6 +451,27 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
             sensorList = getIntent().getParcelableArrayListExtra("sensorList");
             testList = getIntent().getParcelableArrayListExtra("testList");
         }
+    }
+
+    private void chooseLanguageDialog() {
+        final String[] languageList = getResources().getStringArray(R.array.languageList);
+        final AlertDialog.Builder builder = new AlertDialog.Builder(SettingsActivity.this);
+        builder.setTitle(getString(R.string.choose_language));
+        builder.setSingleChoiceItems(languageList, pos, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                changeLocale.setLocale(getResources().getStringArray(R.array.languageCodeList)[which]);
+                recreate();
+            }
+        });
+        builder.setPositiveButton(getString(R.string.cancel), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        AlertDialog alertDialog=builder.create();
+        alertDialog.show();
     }
 
     @Override

@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.toralabs.deviceinfo.R;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -27,6 +29,15 @@ public class Preferences extends Activity {
     public void setPurchasePref(boolean bool) {
         editor = sharedPreferences.edit();
         editor.putBoolean("purchase_state", bool).apply();
+    }
+
+    public String getLocalePref() {
+        return sharedPreferences.getString("lang_code", "en");
+    }
+
+    public void setLocalePref(String code){
+        editor = sharedPreferences.edit();
+        editor.putString("lang_code", code).apply();
     }
 
     public boolean getMode() {

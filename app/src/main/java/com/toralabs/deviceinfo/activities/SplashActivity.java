@@ -31,6 +31,7 @@ import com.toralabs.deviceinfo.impClassMethods.InputDeviceMethod;
 import com.toralabs.deviceinfo.impClassMethods.SensorListMethod;
 import com.toralabs.deviceinfo.impClassMethods.SystemMethod;
 import com.toralabs.deviceinfo.impClassMethods.TestMethod;
+import com.toralabs.deviceinfo.menuItems.ChangeLocale;
 import com.toralabs.deviceinfo.menuItems.Preferences;
 import com.toralabs.deviceinfo.models.ClickableModel;
 import com.toralabs.deviceinfo.models.CpuFreqModel;
@@ -86,11 +87,14 @@ public class SplashActivity extends AppCompatActivity implements Runnable, Handl
     int sensorCount, appCount;
     RelativeLayout rlroot;
     GLSurfaceView glSurfaceView;
+    ChangeLocale changeLocale;
     List<ApplicationInfo> packageList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         preferences = new Preferences(SplashActivity.this);
+        changeLocale=new ChangeLocale(SplashActivity.this);
+        changeLocale.setLocale(preferences.getLocalePref());
         buildInfo = new BuildInfo(SplashActivity.this);
         if (preferences.getMode()) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);

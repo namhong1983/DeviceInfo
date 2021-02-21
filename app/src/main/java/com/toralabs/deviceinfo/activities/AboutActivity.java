@@ -38,7 +38,7 @@ public class AboutActivity extends AppCompatActivity implements View.OnClickList
     NativeAdLayout nativeAdLayout;
     NativeAd nativeAd;
     Button btnRemoveAds, btnTranslate;
-    ImageView imgInsta, imgLinked, imgMail;
+    ImageView imgInsta, imgLinked, imgMail, imgTelegram;
     TextView txtVersion, txtPackage;
     Preferences preferences;
     RemoveAds removeAds;
@@ -91,6 +91,7 @@ public class AboutActivity extends AppCompatActivity implements View.OnClickList
         imgInsta = findViewById(R.id.imgInsta);
         imgLinked = findViewById(R.id.imgLinked);
         imgMail = findViewById(R.id.imgMail);
+        imgTelegram = findViewById(R.id.imgTelegram);
         btnRemoveAds.setTextColor(color);
         btnTranslate.setTextColor(color);
         btnRemoveAds.setBackgroundTintList(ColorStateList.valueOf(color));
@@ -100,6 +101,7 @@ public class AboutActivity extends AppCompatActivity implements View.OnClickList
         imgMail.setOnClickListener(this);
         imgLinked.setOnClickListener(this);
         imgInsta.setOnClickListener(this);
+        imgTelegram.setOnClickListener(this);
         txtVersion.setText(BuildConfig.VERSION_NAME + " (" + BuildConfig.VERSION_CODE + ")");
         txtPackage.setText(getPackageName());
         if (!bool) {
@@ -116,13 +118,17 @@ public class AboutActivity extends AppCompatActivity implements View.OnClickList
             startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.instagram.com/mrudul.tora/")));
         } else if (id == R.id.imgLinked) {
             startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.linkedin.com/in/mrudul-tora-571004166/")));
-        } else if (id == R.id.btnTranslate || id == R.id.imgMail) {
+        } else if (id == R.id.imgTelegram) {
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://t.me/Device_Info")));
+        } else if (id == R.id.imgMail) {
             Intent contact_intent = new Intent(Intent.ACTION_SENDTO);
             contact_intent.putExtra(Intent.EXTRA_EMAIL, new String[]{"toralabs24@gmail.com"});
             contact_intent.putExtra(Intent.EXTRA_SUBJECT, "Feedback for DeviceInfo App");
             contact_intent.setType("message/rfc822");
             contact_intent.setData(Uri.parse("mailto:"));
             startActivity(contact_intent);
+        } else if (id == R.id.btnTranslate) {
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://crowdin.com/translate/deviceinfo/")));
         } else if (id == R.id.btnRemoveAds) {
             if (bool) {
                 CustomSnackBar customSnackBar = new CustomSnackBar(AboutActivity.this, scrollView);
