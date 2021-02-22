@@ -1,3 +1,17 @@
+/*
+Copyright 2020 Mrudul Tora (ToraLabs)
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*/
 package com.toralabs.deviceinfo.fragments;
 
 import android.animation.ObjectAnimator;
@@ -30,6 +44,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -54,7 +69,12 @@ import com.toralabs.deviceinfo.models.CpuFreqModel;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DashboardFragment extends Fragment implements Handler.Callback, NativeAdListener {
+/**
+ Created by @mrudultora
+ Dashboard Fragment to display the details in brief.
+ */
+
+public class DashboardFragment extends Fragment implements Handler.Callback, NativeAdListener,View.OnClickListener {
     NativeAdLayout nativeAdLayout;
     NativeBannerAd nativeBannerAd;
     BuildInfo buildInfo;
@@ -590,4 +610,18 @@ public class DashboardFragment extends Fragment implements Handler.Callback, Nat
     public void onLoggingImpression(Ad ad) {
     }
 
+    @Override
+    public void onClick(View v) {
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.view_pager, new MemoryFragment()).addToBackStack(null).commit();
+        if (v.getId() == R.id.cardRamStatus || v.getId() == R.id.cardSystem || v.getId() == R.id.cardInternal || v.getId() == R.id.cardExternal) {
+            fragmentManager.beginTransaction().replace(R.id.view_pager, new MemoryFragment()).addToBackStack(null).commit();
+        } else if (v.getId() == R.id.cardBattery) {
+            fragmentManager.beginTransaction().replace(R.id.view_pager, new BatteryFragment()).addToBackStack(null).commit();
+        } else if (v.getId() == R.id.cardSensors) {
+            fragmentManager.beginTransaction().replace(R.id.view_pager, new SensorsFragment()).addToBackStack(null).commit();
+        } else if (v.getId() == R.id.cardApps) {
+            fragmentManager.beginTransaction().replace(R.id.view_pager, new AppsFragment()).addToBackStack(null).commit();
+        }
+    }
 }
