@@ -31,7 +31,7 @@
             android:visibility="gone"
             app:cardBackgroundColor="@color/bg"
             app:cardCornerRadius="3dp"
-            app:cardElevation="4dp">
+            app:cardElevation="3dp">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -60,7 +60,7 @@
                     android:layout_marginRight="7.2dp"
                     android:layout_marginBottom="5dp"
                     android:background="@color/bg"
-                    android:elevation="5dp">
+                    android:elevation="2dp">
 
                     <TextView
                         android:id="@+id/txt_level"
