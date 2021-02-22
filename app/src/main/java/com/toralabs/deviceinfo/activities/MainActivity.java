@@ -29,6 +29,7 @@ import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.view.ViewCompat;
+import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -47,6 +48,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
 import com.toralabs.deviceinfo.R;
 import com.toralabs.deviceinfo.adapter.MainAdapter;
+import com.toralabs.deviceinfo.fragments.DashboardFragment;
 import com.toralabs.deviceinfo.impClasses.BuildInfo;
 import com.toralabs.deviceinfo.impClasses.ExportThread;
 import com.toralabs.deviceinfo.menuItems.ChangeLocale;
@@ -66,7 +68,7 @@ import com.toralabs.deviceinfo.models.ThermalModel;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity implements Runnable, ViewPager.OnPageChangeListener {
+public class MainActivity extends AppCompatActivity implements Runnable, ViewPager.OnPageChangeListener, DashboardFragment.ChangeTabListener {
     Preferences preferences;
     RemoveAds removeAds;
     boolean bool, showRate;
@@ -407,5 +409,10 @@ public class MainActivity extends AppCompatActivity implements Runnable, ViewPag
                 }
             }
         });
+    }
+
+    @Override
+    public void changeTabs(int pos) {
+        viewPager.setCurrentItem(pos,true);
     }
 }

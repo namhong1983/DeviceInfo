@@ -28,10 +28,12 @@ public class AppListModel {
     private final String targetsdk;
     private final String minsdk;
     private final String uid;
+    private final String firstInstallDate;
+    private final String lastUpdateDate;
     private final int flag;
     private final String permissions;
 
-    public AppListModel(Drawable icon, String name, String packageName, File file, String size, int flag, String version, String targetsdk, String minsdk, String uid, String permissions) {
+    public AppListModel(Drawable icon, String name, String packageName, File file, String size, int flag, String version, String targetsdk, String minsdk, String uid, String permissions, String firstInstallDate, String lastUpdateDate) {
         this.icon = icon;
         this.name = name;
         this.packageName = packageName;
@@ -43,6 +45,8 @@ public class AppListModel {
         this.flag = flag;
         this.file = file;
         this.permissions = permissions;
+        this.firstInstallDate = firstInstallDate;
+        this.lastUpdateDate = lastUpdateDate;
     }
 
     public Drawable getIcon() {
@@ -87,5 +91,13 @@ public class AppListModel {
 
     public String getPermissions() {
         return permissions;
+    }
+
+    public String getFirstInstallDate() {
+        return firstInstallDate;
+    }
+
+    public String getLastUpdateDate() {
+        return lastUpdateDate;
     }
 }

@@ -18,6 +18,7 @@ import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.annotation.SuppressLint;
 import android.app.ActivityManager;
+import android.app.FragmentManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -44,7 +45,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -70,11 +70,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- Created by @mrudultora
- Dashboard Fragment to display the details in brief.
+ * Created by @mrudultora
+ * Dashboard Fragment to display the details in brief.
  */
 
-public class DashboardFragment extends Fragment implements Handler.Callback, NativeAdListener,View.OnClickListener {
+public class DashboardFragment extends Fragment implements Handler.Callback, NativeAdListener, View.OnClickListener {
     NativeAdLayout nativeAdLayout;
     NativeBannerAd nativeBannerAd;
     BuildInfo buildInfo;
@@ -111,11 +111,13 @@ public class DashboardFragment extends Fragment implements Handler.Callback, Nat
     Handler mainHandler;
     ValueAnimator sensorAnim, appAnim;
     Bundle bundle;
+    ChangeTabListener changeTabListener;
 
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         mainActivity = (MainActivity) getActivity();
+        changeTabListener=(ChangeTabListener) getActivity();
     }
 
     @Override
@@ -207,6 +209,13 @@ public class DashboardFragment extends Fragment implements Handler.Callback, Nat
         setHasOptionsMenu(true);
         findViewByIds(view);
         uiMoreInfo();
+        cardApps.setOnClickListener(this);
+        cardBattery.setOnClickListener(this);
+        cardExternal.setOnClickListener(this);
+        cardInternal.setOnClickListener(this);
+        cardSensors.setOnClickListener(this);
+        cardSystem.setOnClickListener(this);
+        cardRamStatus.setOnClickListener(this);
         recyclerCpu.scheduleLayoutAnimation();
         if (totalRAM != 0)
             ObjectAnimator.ofInt(arcProgress, "progress", (int) (usedRAM * 100 / totalRAM)).setDuration(800).start();
@@ -612,16 +621,18 @@ public class DashboardFragment extends Fragment implements Handler.Callback, Nat
 
     @Override
     public void onClick(View v) {
-        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.view_pager, new MemoryFragment()).addToBackStack(null).commit();
-        if (v.getId() == R.id.cardRamStatus || v.getId() == R.id.cardSystem || v.getId() == R.id.cardInternal || v.getId() == R.id.cardExternal) {
-            fragmentManager.beginTransaction().replace(R.id.view_pager, new MemoryFragment()).addToBackStack(null).commit();
-        } else if (v.getId() == R.id.cardBattery) {
-            fragmentManager.beginTransaction().replace(R.id.view_pager, new BatteryFragment()).addToBackStack(null).commit();
+        if (v.getId() == R.id.cardBattery) {
+            changeTabListener.changeTabs(4);
         } else if (v.getId() == R.id.cardSensors) {
-            fragmentManager.beginTransaction().replace(R.id.view_pager, new SensorsFragment()).addToBackStack(null).commit();
+            changeTabListener.changeTabs(9);
         } else if (v.getId() == R.id.cardApps) {
-            fragmentManager.beginTransaction().replace(R.id.view_pager, new AppsFragment()).addToBackStack(null).commit();
+            changeTabListener.changeTabs(13);
+        } else if (v.getId() == R.id.cardSystem || v.getId() == R.id.cardInternal || v.getId() == R.id.cardExternal) {
+            changeTabListener.changeTabs(6);
         }
+    }
+
+    public interface ChangeTabListener{
+        void changeTabs(int pos);
     }
 }

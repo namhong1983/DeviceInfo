@@ -28,7 +28,6 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginStart="12dp"
-            android:layout_toStartOf="@id/imgStatus"
             android:layout_toEndOf="@id/imgMain"
             android:maxLines="1"
             android:textColor="@color/testcolor"

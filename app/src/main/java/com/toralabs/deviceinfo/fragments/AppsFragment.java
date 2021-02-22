@@ -48,7 +48,9 @@ import com.toralabs.deviceinfo.menuItems.Preferences;
 import com.toralabs.deviceinfo.models.AppListModel;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 
@@ -61,6 +63,7 @@ public class AppsFragment extends Fragment implements MenuItem.OnActionExpandLis
     Drawable icon;
     AppListAdapter appListAdapter;
     String name, packagename, size, version, uid, targetsdk, minsdk = null, permissions = null;
+    String firstInstallDate, lastUpdateDate;
     ArrayList<AppListModel> list = new ArrayList<>();
     List<ApplicationInfo> packagelist = new ArrayList<>();
     File file;
@@ -238,6 +241,9 @@ public class AppsFragment extends Fragment implements MenuItem.OnActionExpandLis
                     StringBuilder stringBuilder = new StringBuilder();
                     packagename = applicationInfo.packageName;
                     try {
+                        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+                        firstInstallDate = dateFormat.format(new Date(getContext().getPackageManager().getPackageInfo(packagename, 0).firstInstallTime));
+                        lastUpdateDate = dateFormat.format(new Date(getContext().getPackageManager().getPackageInfo(packagename, 0).lastUpdateTime));
                         version = manager.getPackageInfo(packagename, 0).versionName;
                         String[] reqper = manager.getPackageInfo(packagename, PackageManager.GET_PERMISSIONS).requestedPermissions;
                         if (reqper != null) {
@@ -275,7 +281,7 @@ public class AppsFragment extends Fragment implements MenuItem.OnActionExpandLis
                     } else {
                         size = (longsize / (1024 * 1024 * 1024) + " GB");
                     }
-                    list.add(new AppListModel(icon, name, packagename, file, size, flag, version, targetsdk, minsdk, uid, permissions));
+                    list.add(new AppListModel(icon, name, packagename, file, size, flag, version, targetsdk, minsdk, uid, permissions,firstInstallDate,lastUpdateDate));
                     if (i == packagelist.size() - 1) {
                         if (getActivity() == null)
                             return;

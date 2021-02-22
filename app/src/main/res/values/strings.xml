@@ -155,6 +155,8 @@
     <string name="targetsdk">Target SDK</string>
     <string name="minsdk">Minimum SDK</string>
     <string name="uid">UID</string>
+    <string name="install_date">Installation Date</string>
+    <string name="update_date">Last Updated</string>
     <string name="permission">Permissions</string>
     <string name="appsize">Size</string>
     <string name="extract">Extract</string>

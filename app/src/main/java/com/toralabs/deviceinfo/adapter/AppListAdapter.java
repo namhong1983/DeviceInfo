@@ -51,13 +51,13 @@ public class AppListAdapter extends RecyclerView.Adapter<AppListAdapter.Viewhold
     View view;
     LinearLayout linear_minsdk;
     RelativeLayout rel_head;
-    TextView txt_name, txt_pkg, txt_version, txt_targetsdk, txt_minsdk, txt_size, txt_uid, txt_permissions, tv_per;
+    TextView txt_name, txt_pkg, txt_version, txt_targetsdk, txt_minsdk, txt_size, txt_uid, txt_permissions, tv_per, txt_firstInstallDate, txt_lastUpdateDate;
 
-    public AppListAdapter(Context context, List<AppListModel> list, int color,View view) {
+    public AppListAdapter(Context context, List<AppListModel> list, int color, View view) {
         this.context = context;
         this.list = list;
         this.color = color;
-        this.view=view;
+        this.view = view;
     }
 
     @NonNull
@@ -84,6 +84,8 @@ public class AppListAdapter extends RecyclerView.Adapter<AppListAdapter.Viewhold
                 icon = customview.findViewById(R.id.icon);
                 icon.setImageDrawable(list.get(position).getIcon());
                 txt_minsdk = customview.findViewById(R.id.txt_minsdk);
+                txt_firstInstallDate = customview.findViewById(R.id.txt_firstInstallDate);
+                txt_lastUpdateDate = customview.findViewById(R.id.txt_lastUpdateDate);
                 linear_minsdk = customview.findViewById(R.id.linear_minsdk);
                 if (list.get(position).getMinsdk() != null) {
                     linear_minsdk.setVisibility(View.VISIBLE);
@@ -104,8 +106,9 @@ public class AppListAdapter extends RecyclerView.Adapter<AppListAdapter.Viewhold
                 txt_targetsdk.setText(list.get(position).getTargetsdk());
                 txt_size.setText(list.get(position).getSize());
                 txt_uid.setText(list.get(position).getUid());
+                txt_firstInstallDate.setText(list.get(position).getFirstInstallDate());
+                txt_lastUpdateDate.setText(list.get(position).getLastUpdateDate());
                 txt_permissions.setText(list.get(position).getPermissions());
-                Log.d("listper", list.get(position).getPermissions());
                 if (list.get(position).getPermissions() != null) {
                     tv_per.setVisibility(View.VISIBLE);
                     txt_permissions.setVisibility(View.VISIBLE);
@@ -163,7 +166,7 @@ public class AppListAdapter extends RecyclerView.Adapter<AppListAdapter.Viewhold
         File file = new File(String.valueOf(list.get(position).getFile()));
         if (ActivityCompat.checkSelfPermission(context, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
             File newFile = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), name + ".apk");
-            ExtractThread extractThread = new ExtractThread(context, file, newFile, newFile.getPath(), color,view);
+            ExtractThread extractThread = new ExtractThread(context, file, newFile, newFile.getPath(), color, view);
             extractThread.start();
         } else {
             ActivityCompat.requestPermissions((Activity) context, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
