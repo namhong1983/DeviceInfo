@@ -18,7 +18,13 @@ jobs:
       with:
         upload_translations: true
         download_translations: true
+        pull_request_labels: 'translations'
+        skip_untranslated_strings: false
+        skip_untranslated_files: false
+        commit_message: 'New Crowdin translations by Github Action'
+        pull_request_title: 'New Crowdin translations to review and merge'
         project_id: 441714
-        token: b56afc7b4872a971c819ae49f409bba5fe79603b4b0dadc0178ff795e59bbdf93c48dc8602fbce1c
+        token: 8aeab7e4060222ec22dd074a8fa6a29dc034c4870be4dc3cd38de39ebcd291f9aa5926fb9651fec6
+        
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
