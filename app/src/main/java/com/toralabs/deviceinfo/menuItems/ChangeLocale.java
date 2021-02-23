@@ -19,6 +19,10 @@ import android.content.res.Configuration;
 
 import java.util.Locale;
 
+/**
+ * Created by @mrudultora
+ */
+
 public class ChangeLocale {
     Context context;
     Preferences preferences;

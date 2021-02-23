@@ -32,6 +32,10 @@ import com.toralabs.deviceinfo.activities.ListFeaturesActivity;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Created by @mrudultora
+ */
+
 public class NativeAdInflate {
     private final Context context;
     private final int color;

@@ -55,6 +55,10 @@ import com.toralabs.deviceinfo.models.SimpleModel;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+/**
+ * Created by @mrudultora
+ */
+
 public class CameraFragment extends Fragment implements CameraAdapter.CameraClickListener, Handler.Callback {
     CameraManager cameraManager;
     Preferences preferences;

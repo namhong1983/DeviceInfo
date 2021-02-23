@@ -22,6 +22,10 @@ import com.toralabs.deviceinfo.models.ThermalModel;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+/**
+ * Created by @mrudultora
+ */
+
 public class CodecsMethod {
     int numCodecs;
     MediaCodecList codecList;

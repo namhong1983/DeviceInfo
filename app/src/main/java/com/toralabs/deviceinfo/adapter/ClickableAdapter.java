@@ -29,6 +29,10 @@ import com.toralabs.deviceinfo.models.ClickableModel;
 
 import java.util.List;
 
+/**
+ * Created by @mrudultora
+ */
+
 public class ClickableAdapter extends RecyclerView.Adapter<ClickableAdapter.Viewholder> {
     private final Context context;
     List<ClickableModel> list;

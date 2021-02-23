@@ -23,6 +23,10 @@ import com.toralabs.deviceinfo.R;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Created by @mrudultora
+ */
+
 public class Preferences extends Activity {
     Context context;
     SharedPreferences sharedPreferences;

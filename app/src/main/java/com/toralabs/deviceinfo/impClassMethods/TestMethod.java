@@ -29,6 +29,10 @@ import com.toralabs.deviceinfo.models.TestModel;
 import java.util.ArrayList;
 import java.util.Map;
 
+/**
+ * Created by @mrudultora
+ */
+
 public class TestMethod {
     private final Context context;
     Preferences preferences;

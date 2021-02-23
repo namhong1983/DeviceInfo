@@ -43,6 +43,10 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Created by @mrudultora
+ */
+
 public class AppListAdapter extends RecyclerView.Adapter<AppListAdapter.Viewholder> {
     private final Context context;
     private List<AppListModel> list;

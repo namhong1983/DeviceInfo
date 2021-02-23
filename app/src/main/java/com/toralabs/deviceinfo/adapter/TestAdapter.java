@@ -39,6 +39,10 @@ import com.toralabs.deviceinfo.models.TestModel;
 
 import java.util.List;
 
+/**
+ * Created by @mrudultora
+ */
+
 public class TestAdapter extends RecyclerView.Adapter<TestAdapter.ViewHolder> implements NativeAdListener {
     private final Context context;
     private ViewHolder viewHolder;

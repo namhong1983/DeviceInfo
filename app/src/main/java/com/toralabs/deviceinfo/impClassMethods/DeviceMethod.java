@@ -40,6 +40,10 @@ import java.util.List;
 import java.util.Locale;
 import java.util.TimeZone;
 
+/**
+ * Created by @mrudultora
+ */
+
 public class DeviceMethod {
     ArrayList<ClickableModel> deviceList = new ArrayList<>();
     Context context;

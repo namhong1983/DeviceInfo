@@ -35,6 +35,10 @@ import com.toralabs.deviceinfo.models.CpuModel;
 
 import java.util.List;
 
+/**
+ * Created by @mrudultora
+ */
+
 public class CpuAdapter extends RecyclerView.Adapter<CpuAdapter.ViewHolder> {
     private final Context context;
     List<CpuModel> list;

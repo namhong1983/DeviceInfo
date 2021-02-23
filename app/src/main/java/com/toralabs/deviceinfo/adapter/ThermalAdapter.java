@@ -28,6 +28,10 @@ import com.toralabs.deviceinfo.models.ThermalModel;
 
 import java.util.List;
 
+/**
+ * Created by @mrudultora
+ */
+
 public class ThermalAdapter extends RecyclerView.Adapter<ThermalAdapter.ViewHolder> {
     List<ThermalModel> list;
     private final Context context;

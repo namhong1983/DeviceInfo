@@ -33,6 +33,10 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+/**
+ * Created by @mrudultora
+ */
+
 public class CpuMethod {
     private final Context context;
     Preferences preferences;

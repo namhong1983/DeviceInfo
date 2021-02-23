@@ -27,6 +27,10 @@ import com.toralabs.deviceinfo.R;
 import com.toralabs.deviceinfo.activities.MainActivity;
 import com.toralabs.deviceinfo.activities.SplashActivity;
 
+/**
+ * Created by @mrudultora
+ */
+
 public class AppWidget extends AppWidgetProvider {
     int pct, storagePct;
     long totalRAM, freeRam, usedRAM, totalStorage, usedStorage;

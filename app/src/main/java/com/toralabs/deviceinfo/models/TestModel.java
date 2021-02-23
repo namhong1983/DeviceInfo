@@ -17,6 +17,10 @@ package com.toralabs.deviceinfo.models;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+/**
+ * Created by @mrudultora
+ */
+
 public class TestModel implements Parcelable {
     private final int imgMain;
     private int imgStatus;

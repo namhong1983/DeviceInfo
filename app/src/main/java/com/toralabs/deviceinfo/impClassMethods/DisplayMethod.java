@@ -28,6 +28,10 @@ import com.toralabs.deviceinfo.models.SimpleModel;
 
 import java.util.ArrayList;
 
+/**
+ * Created by @mrudultora
+ */
+
 public class DisplayMethod {
     private final Context context;
     ArrayList<SimpleModel> displayList = new ArrayList<>();

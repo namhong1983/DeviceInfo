@@ -25,6 +25,10 @@ import android.os.CancellationSignal;
 import androidx.annotation.RequiresApi;
 import androidx.core.app.ActivityCompat;
 
+/**
+ * Created by @mrudultora
+ */
+
 @RequiresApi(api = Build.VERSION_CODES.M)
 public class FingerPrint extends AuthenticationCallback {
     CancellationSignal cancellationSignal;

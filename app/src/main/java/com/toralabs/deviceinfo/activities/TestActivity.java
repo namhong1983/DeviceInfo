@@ -66,6 +66,10 @@ import com.toralabs.deviceinfo.menuItems.ThemeConstant;
 
 import java.util.List;
 
+/**
+ * Created by @mrudultora
+ */
+
 public class TestActivity extends AppCompatActivity implements View.OnClickListener, SensorEventListener {
     ImageView imgCancel, imgTest, imgSuccess;
     TextView txtQues, txtTouch, txtInfo;

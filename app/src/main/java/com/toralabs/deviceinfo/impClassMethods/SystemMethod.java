@@ -32,6 +32,10 @@ import java.util.UUID;
 
 import static java.lang.System.getProperty;
 
+/**
+ * Created by @mrudultora
+ */
+
 public class SystemMethod {
     ArrayList<SimpleModel> systemList = new ArrayList<>();
     int logoId;

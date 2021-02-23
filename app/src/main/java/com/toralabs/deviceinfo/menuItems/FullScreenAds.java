@@ -24,6 +24,10 @@ import com.toralabs.deviceinfo.R;
 
 import static com.facebook.ads.CacheFlag.ALL;
 
+/**
+ * Created by @mrudultora
+ */
+
 public class FullScreenAds {
     private final Context context;
     InterstitialAd interstitialAd;

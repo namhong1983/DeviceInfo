@@ -35,6 +35,10 @@ import com.toralabs.deviceinfo.models.SensorListModel;
 
 import java.util.List;
 
+/**
+ * Created by @mrudultora
+ */
+
 public class SensorAdapter extends RecyclerView.Adapter<SensorAdapter.Viewholder> {
     private final Context context;
     private final List<SensorListModel> list;

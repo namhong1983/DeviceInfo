@@ -17,6 +17,10 @@ package com.toralabs.deviceinfo.models;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+/**
+ * Created by @mrudultora
+ */
+
 public class SensorListModel implements Parcelable {
     private final int image;
     private final String name;

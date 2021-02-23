@@ -59,6 +59,10 @@ import com.toralabs.deviceinfo.models.SimpleModel;
 
 import java.util.ArrayList;
 
+/**
+ * Created by @mrudultora
+ */
+
 public class BatteryFragment extends Fragment implements NativeAdListener {
     NativeAdLayout nativeAdLayout;
     NativeBannerAd nativeBannerAd;

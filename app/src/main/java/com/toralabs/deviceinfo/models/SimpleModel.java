@@ -17,6 +17,10 @@ package com.toralabs.deviceinfo.models;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+/**
+ * Created by @mrudultora
+ */
+
 public class SimpleModel implements Parcelable {
     private final String title;
     private final String desc;

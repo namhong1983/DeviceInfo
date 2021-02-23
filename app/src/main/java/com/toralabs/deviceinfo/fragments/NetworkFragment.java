@@ -39,6 +39,7 @@ import android.provider.Settings;
 import android.telephony.CellSignalStrength;
 import android.telephony.PhoneStateListener;
 import android.telephony.SignalStrength;
+import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
 import android.view.LayoutInflater;
@@ -110,6 +111,9 @@ public class NetworkFragment extends Fragment implements View.OnClickListener, H
     NetworkRequest networkRequestCell, networkRequestWifi;
     boolean darkMode, airplaneMode, simAvailable;
     List<CellSignalStrength> signalStrengthList;
+    List<SubscriptionInfo> subscriptionInfo = new ArrayList<>();
+    List<String> carrierName = new ArrayList<>();
+    SubscriptionManager manager;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -828,12 +832,12 @@ public class NetworkFragment extends Fragment implements View.OnClickListener, H
 //        if (Build.VERSION.SDK_INT > 22) {
 //            manager = (SubscriptionManager) context.getSystemService(Context.TELEPHONY_SUBSCRIPTION_SERVICE);
 //            if (ActivityCompat.checkSelfPermission(context, Manifest.permission.READ_PHONE_STATE) == PackageManager.PERMISSION_GRANTED) {
-//                info = manager.getActiveSubscriptionInfoList();
-//                if (info != null) {
-//                    for (int i = 0; i < info.size(); i++) {
-//                        carrierName.add((String) info.get(i).getCarrierName());
+//                subscriptionInfo = manager.getActiveSubscriptionInfoList();
+//                if (subscriptionInfo != null) {
+//                    for (int i = 0; i < subscriptionInfo.size(); i++) {
+//                        carrierName.add((String) subscriptionInfo.get(i).getCarrierName());
 //                    }
-//                    for (int i = 0; i < info.size(); i++) {
+//                    for (int i = 0; i < subscriptionInfo.size(); i++) {
 //                        deviceList.add(new ClickableModel(context.getResources().getString(R.string.netop), carrierName.get(i), false));
 //                    }
 //                } else {

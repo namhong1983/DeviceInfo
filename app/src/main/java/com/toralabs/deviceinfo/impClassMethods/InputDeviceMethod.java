@@ -23,6 +23,10 @@ import com.toralabs.deviceinfo.models.InputModel;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Created by @mrudultora
+ */
+
 public class InputDeviceMethod {
     private final Context context;
     ArrayList<InputModel> inputList = new ArrayList<>();

@@ -48,6 +48,10 @@ import com.toralabs.deviceinfo.models.SimpleModel;
 
 import java.util.ArrayList;
 
+/**
+ * Created by @mrudultora
+ */
+
 public class DisplayFragment extends Fragment {
     RecyclerView recycler_display;
     SimpleAdapter simpleAdapter;

@@ -29,7 +29,6 @@ import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.view.ViewCompat;
-import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -67,6 +66,10 @@ import com.toralabs.deviceinfo.models.TestModel;
 import com.toralabs.deviceinfo.models.ThermalModel;
 
 import java.util.ArrayList;
+
+/**
+ * Created by @mrudultora
+ */
 
 public class MainActivity extends AppCompatActivity implements Runnable, ViewPager.OnPageChangeListener, DashboardFragment.ChangeTabListener {
     Preferences preferences;

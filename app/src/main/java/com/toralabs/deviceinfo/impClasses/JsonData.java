@@ -24,6 +24,10 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 
+/**
+ * Created by @mrudultora
+ */
+
 public class JsonData {
     private String cpuFamily = "", process = "", memory = "", bandwidth = "", channels = "", json = null, machine;
     private final Context context;

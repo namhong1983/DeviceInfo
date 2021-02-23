@@ -44,6 +44,10 @@ import com.toralabs.deviceinfo.models.ThermalModel;
 
 import java.util.ArrayList;
 
+/**
+ * Created by @mrudultora
+ */
+
 public class CodecsFragment extends Fragment {
     RecyclerView recycler_codecs;
     ThermalAdapter adapter;

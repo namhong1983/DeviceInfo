@@ -65,6 +65,10 @@ import java.util.ArrayList;
 
 import petrov.kristiyan.colorpicker.ColorPicker;
 
+/**
+ * Created by @mrudultora
+ */
+
 public class SettingsActivity extends AppCompatActivity implements View.OnClickListener, Runnable {
     HandlerThread intentThread = new HandlerThread("intentThread");
     Handler intentHandler;

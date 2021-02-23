@@ -59,6 +59,10 @@ import com.toralabs.deviceinfo.models.SimpleModel;
 import java.util.ArrayList;
 import java.util.UUID;
 
+/**
+ * Created by @mrudultora
+ */
+
 public class SystemFragment extends Fragment implements NativeAdListener {
     NativeAdLayout nativeAdLayout;
     NativeBannerAd nativeBannerAd;

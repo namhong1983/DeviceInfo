@@ -50,6 +50,10 @@ import com.toralabs.deviceinfo.models.CpuModel;
 
 import java.util.ArrayList;
 
+/**
+ * Created by @mrudultora
+ */
+
 public class CpuFragment extends Fragment {
     Preferences preferences;
     BuildInfo buildInfo;

@@ -31,6 +31,10 @@ import com.toralabs.deviceinfo.R;
 import com.toralabs.deviceinfo.models.SimpleModel;
 import java.util.List;
 
+/**
+ * Created by @mrudultora
+ */
+
 public class SimpleAdapter extends RecyclerView.Adapter<SimpleAdapter.Viewholder> {
     private List<SimpleModel> list;
     final private Context context;

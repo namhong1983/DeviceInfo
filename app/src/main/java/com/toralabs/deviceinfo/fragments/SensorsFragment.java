@@ -45,6 +45,10 @@ import com.toralabs.deviceinfo.models.SensorListModel;
 
 import java.util.ArrayList;
 
+/**
+ * Created by @mrudultora
+ */
+
 public class SensorsFragment extends Fragment {
     RecyclerView recycler_sensor;
     SensorAdapter sensorAdapter;

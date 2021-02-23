@@ -45,6 +45,10 @@ import com.toralabs.deviceinfo.models.InputModel;
 
 import java.util.ArrayList;
 
+/**
+ * Created by @mrudultora
+ */
+
 public class InputFragment extends Fragment {
     Preferences preferences;
     BuildInfo buildInfo;

@@ -32,6 +32,10 @@ import com.toralabs.deviceinfo.R;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Created by @mrudultora
+ */
+
 public class NativeBannerAdInflate {
     private final Context context;
     private final int color;

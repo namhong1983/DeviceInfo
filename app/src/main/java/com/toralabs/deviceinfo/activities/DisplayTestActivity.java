@@ -26,6 +26,10 @@ import android.widget.RelativeLayout;
 
 import com.toralabs.deviceinfo.R;
 
+/**
+ * Created by @mrudultora
+ */
+
 public class DisplayTestActivity extends AppCompatActivity {
     RelativeLayout relLayout, rel1, rel2, rel3, rel4, rel5, rel6, rel7, rel8, rel9, rel10, rel11, rel12, rel13, rel14, rel15, rel16;
     LinearLayout linear1, linear2, linear3, linear4, linear5, linear6, linear7, linear8;

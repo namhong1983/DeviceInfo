@@ -64,6 +64,10 @@ import com.toralabs.deviceinfo.models.ClickableModel;
 
 import java.util.ArrayList;
 
+/**
+ * Created by @mrudultora
+ */
+
 public class DeviceFragment extends Fragment implements ClickableAdapter.ItemClickListener, Runnable, Handler.Callback {
     RecyclerView recycler_device;
     ClickableAdapter clickableAdapter;

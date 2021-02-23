@@ -72,6 +72,10 @@ import javax.crypto.SecretKey;
 
 import static android.app.Activity.RESULT_OK;
 
+/**
+ * Created by @mrudultora
+ */
+
 public class TestsFragment extends Fragment implements TestAdapter.ItemClickListener, FingerPrint.OnAuthenticationResult {
     Preferences preferences;
     RecyclerView recycler_tests;

@@ -25,6 +25,10 @@ import com.toralabs.deviceinfo.models.SensorListModel;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Created by @mrudultora
+ */
+
 public class SensorListMethod {
     private final Context context;
     String name, vendor, power, type, type_specific;

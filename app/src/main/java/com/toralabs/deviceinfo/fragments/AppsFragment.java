@@ -53,6 +53,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * Created by @mrudultora
+ */
 
 public class AppsFragment extends Fragment implements MenuItem.OnActionExpandListener {
     RecyclerView recycler_apps;

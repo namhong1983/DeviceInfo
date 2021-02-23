@@ -61,6 +61,10 @@ import com.toralabs.deviceinfo.menuItems.Preferences;
 import java.io.File;
 import java.util.Map;
 
+/**
+ * Created by @mrudultora
+ */
+
 public class MemoryFragment extends Fragment implements Handler.Callback, NativeAdListener, View.OnClickListener {
     NativeAdLayout nativeAdLayout;
     NativeBannerAd nativeBannerAd;

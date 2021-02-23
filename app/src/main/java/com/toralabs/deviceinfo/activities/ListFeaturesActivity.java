@@ -34,6 +34,10 @@ import com.toralabs.deviceinfo.menuItems.ChangeLocale;
 import com.toralabs.deviceinfo.menuItems.Preferences;
 import com.toralabs.deviceinfo.menuItems.ThemeConstant;
 
+/**
+ * Created by @mrudultora
+ */
+
 public class ListFeaturesActivity extends AppCompatActivity implements NativeAdListener {
     TextView txtFeatures;
     NativeAdLayout nativeAdLayout;

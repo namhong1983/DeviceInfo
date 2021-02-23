@@ -31,6 +31,10 @@ import com.toralabs.deviceinfo.models.CameraModel;
 
 import java.util.List;
 
+/**
+ * Created by @mrudultora
+ */
+
 public class CameraAdapter extends RecyclerView.Adapter<CameraAdapter.Viewholder> {
     private final Context context;
     int color;

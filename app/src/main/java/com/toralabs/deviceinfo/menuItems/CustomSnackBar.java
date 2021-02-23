@@ -26,6 +26,10 @@ import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
 import com.toralabs.deviceinfo.R;
 
+/**
+ * Created by @mrudultora
+ */
+
 public class CustomSnackBar {
     private final Context context;
     private final View view;

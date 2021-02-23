@@ -48,6 +48,10 @@ import com.toralabs.deviceinfo.menuItems.Preferences;
 import com.toralabs.deviceinfo.menuItems.RemoveAds;
 import com.toralabs.deviceinfo.menuItems.ThemeConstant;
 
+/**
+ * Created by @mrudultora
+ */
+
 public class AboutActivity extends AppCompatActivity implements View.OnClickListener, NativeAdListener {
     NativeAdLayout nativeAdLayout;
     NativeAd nativeAd;

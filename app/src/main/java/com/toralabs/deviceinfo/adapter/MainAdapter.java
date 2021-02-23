@@ -39,6 +39,10 @@ import com.toralabs.deviceinfo.fragments.SystemFragment;
 import com.toralabs.deviceinfo.fragments.TestsFragment;
 import com.toralabs.deviceinfo.fragments.ThermalFragment;
 
+/**
+ * Created by @mrudultora
+ */
+
 public class MainAdapter extends FragmentStatePagerAdapter {
     private final Context context;
 

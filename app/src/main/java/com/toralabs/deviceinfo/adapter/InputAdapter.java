@@ -38,6 +38,10 @@ import com.toralabs.deviceinfo.models.InputModel;
 
 import java.util.List;
 
+/**
+ * Created by @mrudultora
+ */
+
 public class InputAdapter extends RecyclerView.Adapter<InputAdapter.ViewHolder> implements NativeAdListener {
     Preferences preferences;
     private final Context context;

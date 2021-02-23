@@ -29,6 +29,10 @@ import com.toralabs.deviceinfo.models.CpuFreqModel;
 
 import java.util.List;
 
+/**
+ * Created by @mrudultora
+ */
+
 public class CpuFreqAdapter extends RecyclerView.Adapter<CpuFreqAdapter.ViewHolder> {
     List<CpuFreqModel> list;
     private final Context context;

@@ -37,6 +37,10 @@ import com.toralabs.deviceinfo.R;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Created by @mrudultora
+ */
+
 public class RemoveAds implements PurchasesUpdatedListener {
     private final Context context;
     BillingClient billingClient;

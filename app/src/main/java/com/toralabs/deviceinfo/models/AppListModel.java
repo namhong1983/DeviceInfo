@@ -18,6 +18,10 @@ import android.graphics.drawable.Drawable;
 
 import java.io.File;
 
+/**
+ * Created by @mrudultora
+ */
+
 public class AppListModel {
     private final Drawable icon;
     private final String name;
