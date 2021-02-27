@@ -317,6 +317,9 @@
     <string name="country">देश</string>
     <string name="roaming">रोमिंग</string>
     <string name="networkType">नेटवर्क प्रकार</string>
+    <string name="imsi">IMSI</string>
+    <string name="enabled">Enabled</string>
+    <string name="disabled">Disabled</string>
     <string name="touchdet">स्पर्श का पता चला</string>
     <string name="bssid">बीएसएसआईडी</string>
     <string name="dhcpserver">डीएचसीपी सर्वर</string>
