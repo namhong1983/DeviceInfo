@@ -317,6 +317,9 @@
     <string name="country">Country</string>
     <string name="roaming">Roaming</string>
     <string name="networkType">Network Type</string>
+    <string name="imsi">IMSI</string>
+    <string name="enabled">Enabled</string>
+    <string name="disabled">Disabled</string>
     <string name="touchdet">Touches Detected</string>
     <string name="bssid">BSSID</string>
     <string name="dhcpserver">DHCP Server</string>
