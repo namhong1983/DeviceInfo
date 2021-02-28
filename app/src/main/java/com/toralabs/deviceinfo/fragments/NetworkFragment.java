@@ -75,6 +75,11 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Created by @mrudultora
+ * This is only fragment whose data is not loaded in splash activity. Max work is done in background thread due to heaviness.
+ */
+
 public class NetworkFragment extends Fragment implements View.OnClickListener, Handler.Callback, Runnable {
     Preferences preferences;
     BuildInfo buildInfo;
