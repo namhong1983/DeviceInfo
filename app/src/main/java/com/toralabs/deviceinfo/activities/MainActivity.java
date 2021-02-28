@@ -1,3 +1,17 @@
+/*
+Copyright 2020 Mrudul Tora (ToraLabs)
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*/
 package com.toralabs.deviceinfo.activities;
 
 import android.Manifest;
@@ -33,6 +47,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
 import com.toralabs.deviceinfo.R;
 import com.toralabs.deviceinfo.adapter.MainAdapter;
+import com.toralabs.deviceinfo.fragments.DashboardFragment;
 import com.toralabs.deviceinfo.impClasses.BuildInfo;
 import com.toralabs.deviceinfo.impClasses.ExportThread;
 import com.toralabs.deviceinfo.menuItems.ChangeLocale;
@@ -52,7 +67,11 @@ import com.toralabs.deviceinfo.models.ThermalModel;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity implements Runnable, ViewPager.OnPageChangeListener {
+/**
+ * Created by @mrudultora
+ */
+
+public class MainActivity extends AppCompatActivity implements Runnable, ViewPager.OnPageChangeListener, DashboardFragment.ChangeTabListener {
     Preferences preferences;
     RemoveAds removeAds;
     boolean bool, showRate;
@@ -393,5 +412,10 @@ public class MainActivity extends AppCompatActivity implements Runnable, ViewPag
                 }
             }
         });
+    }
+
+    @Override
+    public void changeTabs(int pos) {
+        viewPager.setCurrentItem(pos,true);
     }
 }

@@ -1,10 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+Copyright 2020 Mrudul Tora (ToraLabs)
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+!-->
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scrollview"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/scrollview"
     android:background="@color/white_bg"
     android:overScrollMode="never"
     android:scrollbars="none">
@@ -152,8 +166,6 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/recyclerCpu"
             android:layout_margin="3dp"
-            android:clickable="true"
-            android:focusable="true"
             android:padding="4dp"
             app:cardBackgroundColor="@color/bg"
             app:cardCornerRadius="4dp"
@@ -162,9 +174,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="?android:attr/selectableItemBackground"
-                android:clickable="true"
-                android:focusable="true">
+                android:background="?android:attr/selectableItemBackground">
 
                 <ImageView
                     android:id="@+id/img_sys"
@@ -259,8 +269,6 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/cardAd"
             android:layout_margin="3dp"
-            android:clickable="true"
-            android:focusable="true"
             android:padding="4dp"
             app:cardBackgroundColor="@color/bg"
             app:cardCornerRadius="4dp"
@@ -269,9 +277,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="?android:attr/selectableItemBackground"
-                android:clickable="true"
-                android:focusable="true">
+                android:background="?android:attr/selectableItemBackground">
 
                 <ImageView
                     android:id="@+id/img_int"
@@ -346,8 +352,6 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/cardInternal"
             android:layout_margin="3dp"
-            android:clickable="true"
-            android:focusable="true"
             android:padding="4dp"
             android:visibility="gone"
             app:cardBackgroundColor="@color/bg"
@@ -357,9 +361,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="?android:attr/selectableItemBackground"
-                android:clickable="true"
-                android:focusable="true">
+                android:background="?android:attr/selectableItemBackground">
 
                 <ImageView
                     android:id="@+id/img_ext"
@@ -433,8 +435,6 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/cardExternal"
             android:layout_margin="3dp"
-            android:clickable="true"
-            android:focusable="true"
             android:padding="4dp"
             app:cardBackgroundColor="@color/bg"
             app:cardCornerRadius="4dp"
@@ -443,9 +443,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="?android:attr/selectableItemBackground"
-                android:clickable="true"
-                android:focusable="true">
+                android:background="?android:attr/selectableItemBackground">
 
                 <ImageView
                     android:id="@+id/img_battery"
@@ -541,8 +539,6 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:layout_weight="1"
-                android:clickable="true"
-                android:focusable="true"
                 android:padding="7dp"
                 app:cardBackgroundColor="@color/bg"
                 app:cardCornerRadius="4dp"
@@ -551,9 +547,7 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="?android:attr/selectableItemBackground"
-                    android:clickable="true"
-                    android:focusable="true">
+                    android:background="?android:attr/selectableItemBackground">
 
                     <ImageView
                         android:id="@+id/img_sensor"
@@ -581,7 +575,7 @@
 
                     <TextView
                         android:id="@+id/txtsensor"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/txt_sensorcount"
                         android:layout_marginStart="20dp"
@@ -603,8 +597,6 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:layout_weight="1"
-                android:clickable="true"
-                android:focusable="true"
                 android:padding="7dp"
                 app:cardBackgroundColor="@color/bg"
                 app:cardCornerRadius="4dp"
@@ -613,9 +605,7 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="?android:attr/selectableItemBackground"
-                    android:clickable="true"
-                    android:focusable="true">
+                    android:background="?android:attr/selectableItemBackground">
 
                     <ImageView
                         android:id="@+id/img_apps"
@@ -643,7 +633,7 @@
 
                     <TextView
                         android:id="@+id/txtapps"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/txt_appcount"
                         android:layout_marginStart="20dp"

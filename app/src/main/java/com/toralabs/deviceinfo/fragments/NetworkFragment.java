@@ -1,3 +1,17 @@
+/*
+Copyright 2020 Mrudul Tora (ToraLabs)
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*/
 package com.toralabs.deviceinfo.fragments;
 
 import android.Manifest;
@@ -25,6 +39,7 @@ import android.provider.Settings;
 import android.telephony.CellSignalStrength;
 import android.telephony.PhoneStateListener;
 import android.telephony.SignalStrength;
+import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
 import android.view.LayoutInflater;
@@ -59,6 +74,11 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
+
+/**
+ * Created by @mrudultora
+ * This is only fragment whose data is not loaded in splash activity. Max work is done in background thread due to heaviness.
+ */
 
 public class NetworkFragment extends Fragment implements View.OnClickListener, Handler.Callback, Runnable {
     Preferences preferences;
@@ -96,6 +116,9 @@ public class NetworkFragment extends Fragment implements View.OnClickListener, H
     NetworkRequest networkRequestCell, networkRequestWifi;
     boolean darkMode, airplaneMode, simAvailable;
     List<CellSignalStrength> signalStrengthList;
+    List<SubscriptionInfo> subscriptionInfo = new ArrayList<>();
+    List<String> carrierName = new ArrayList<>();
+    SubscriptionManager manager;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -222,6 +245,7 @@ public class NetworkFragment extends Fragment implements View.OnClickListener, H
         } else {
             getSimInfo();
         }
+        getDefaultsUiInfo();
         return view;
     }
 
@@ -405,6 +429,7 @@ public class NetworkFragment extends Fragment implements View.OnClickListener, H
 
     @Override
     public void run() {
+        addDefaults();
         if (telephonyManager.getSimState() != TelephonyManager.SIM_STATE_ABSENT)
             simAvailable = true;
         wifiInfo();
@@ -441,20 +466,19 @@ public class NetworkFragment extends Fragment implements View.OnClickListener, H
             phoneCount = (Integer) m.invoke(telephonyManager);
         } catch (Exception e) {
         }
-        sim1List.add(new SimpleModel(getResources().getString(R.string.state), buildInfo.getSimState()));
-        sim1List.add(new SimpleModel(getResources().getString(R.string.operator), telephonyManager.getSimOperatorName()));
-        sim1List.add(new SimpleModel(getResources().getString(R.string.operator_code), telephonyManager.getSimOperator()));
-        sim1List.add(new SimpleModel(getResources().getString(R.string.country), telephonyManager.getNetworkCountryIso().toUpperCase()));
-        sim1List.add(new SimpleModel(getResources().getString(R.string.networkType), buildInfo.getNetworkG(telephonyManager.getNetworkType())));
-        sim1List.add(new SimpleModel(getResources().getString(R.string.phonetype), buildInfo.getPhoneType()));
-        if (telephonyManager.isNetworkRoaming())
-            sim1List.add(new SimpleModel(getResources().getString(R.string.roaming), "Enabled"));
-        else
-            sim1List.add(new SimpleModel(getResources().getString(R.string.roaming), "Disabled"));
+//        sim1List.add(new SimpleModel(getResources().getString(R.string.state), buildInfo.getSimState()));
+//        sim1List.add(new SimpleModel(getResources().getString(R.string.operator), telephonyManager.getSimOperatorName()));
+//        sim1List.add(new SimpleModel(getResources().getString(R.string.operator_code), telephonyManager.getSimOperator()));
+//        sim1List.add(new SimpleModel(getResources().getString(R.string.country), telephonyManager.getNetworkCountryIso().toUpperCase()));
+//        sim1List.add(new SimpleModel(getResources().getString(R.string.networkType), buildInfo.getNetworkG(telephonyManager.getNetworkType())));
+//        sim1List.add(new SimpleModel(getResources().getString(R.string.phonetype), buildInfo.getPhoneType()));
+//        if (telephonyManager.isNetworkRoaming())
+//            sim1List.add(new SimpleModel(getResources().getString(R.string.roaming), "Enabled"));
+//        else
+//            sim1List.add(new SimpleModel(getResources().getString(R.string.roaming), "Disabled"));
         buildInfo.getIp6Address();
         buildInfo.getIp4Address();
         telephonyManager.getSimState();
-        defaultsInfo();
         type = String.valueOf(telephonyManager.getNetworkType());
         networkG = buildInfo.getNetworkG(Integer.parseInt(type));
         telephonyManager.listen(new PhoneStateListener() {
@@ -684,67 +708,6 @@ public class NetworkFragment extends Fragment implements View.OnClickListener, H
         uiHandler.sendMessage(message);
     }
 
-    // Write methods for All the Sim Details available in the device....
-
-    public void defaultsInfo() {
-        if (simAvailable && Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP_MR1) {
-            try {
-                Method m;
-                m = SubscriptionManager.class.getDeclaredMethod("getDefaultDataSubscriptionId");
-                m.setAccessible(true);
-                switch ((Integer) m.invoke(SubscriptionManager.class)) {
-                    case -1:
-                        defaultsList.add(new SimpleModel(getResources().getString(R.string.data), "Not Set"));
-                        break;
-                    case 1:
-                        defaultsList.add(new SimpleModel(getResources().getString(R.string.data), "SIM 1"));
-                        break;
-                    case 2:
-                        defaultsList.add(new SimpleModel(getResources().getString(R.string.data), "SIM 2"));
-                        break;
-                    case 3:
-                        defaultsList.add(new SimpleModel(getResources().getString(R.string.data), "SIM 3"));
-                        break;
-                }
-                m = SubscriptionManager.class.getDeclaredMethod("getDefaultVoiceSubscriptionId");
-                m.setAccessible(true);
-                switch ((Integer) m.invoke(SubscriptionManager.class)) {
-                    case -1:
-                        defaultsList.add(new SimpleModel(getResources().getString(R.string.voice), "Not Set"));
-                        break;
-                    case 1:
-                        defaultsList.add(new SimpleModel(getResources().getString(R.string.voice), "SIM 1"));
-                        break;
-                    case 2:
-                        defaultsList.add(new SimpleModel(getResources().getString(R.string.voice), "SIM 2"));
-                        break;
-                    case 3:
-                        defaultsList.add(new SimpleModel(getResources().getString(R.string.voice), "SIM 3"));
-                        break;
-                }
-                m = SubscriptionManager.class.getDeclaredMethod("getDefaultSmsSubscriptionId");
-                m.setAccessible(true);
-                switch ((Integer) m.invoke(SubscriptionManager.class)) {
-                    case -1:
-                        defaultsList.add(new SimpleModel(getResources().getString(R.string.sms), "Not Set"));
-                        break;
-                    case 1:
-                        defaultsList.add(new SimpleModel(getResources().getString(R.string.sms), "SIM 1"));
-                        break;
-                    case 2:
-                        defaultsList.add(new SimpleModel(getResources().getString(R.string.sms), "SIM 2"));
-                        break;
-                    case 3:
-                        defaultsList.add(new SimpleModel(getResources().getString(R.string.sms), "SIM 3"));
-                        break;
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
-
     public int checkConnectionStatusAboveM(Network network) {
         int i = 0;
         if (network != null) {
@@ -798,40 +761,100 @@ public class NetworkFragment extends Fragment implements View.OnClickListener, H
         }
     }
 
-    private void getSimInfo(){
-        if (simAvailable && android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP_MR1 && defaultsList.size() != 0) {
-            cardDefaults.setVisibility(View.VISIBLE);
-            simpleAdapterDefault = new SimpleAdapter(defaultsList, getContext(), color);
-            recyclerDefault.setLayoutManager(new LinearLayoutManager(getContext()));
-            recyclerDefault.setNestedScrollingEnabled(false);
-            recyclerDefault.setAdapter(simpleAdapterDefault);
+    private void getSimInfo() {
+        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP_MR1) {
+            manager = (SubscriptionManager) getContext().getSystemService(Context.TELEPHONY_SUBSCRIPTION_SERVICE);
+            if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.READ_PHONE_STATE) == PackageManager.PERMISSION_GRANTED) {
+                subscriptionInfo = manager.getActiveSubscriptionInfoList();
+                if (subscriptionInfo != null) {
+                    for (int i = 0; i < subscriptionInfo.size(); i++) {
+                        if (i == 1) {
+//                            sim1List.add(new SimpleModel(getResources().getString(R.string.state), buildInfo.getSimState()));
+//                            sim1List.add(new SimpleModel(getResources().getString(R.string.operator), (String) subscriptionInfo.get(i).getCarrierName()));
+//                            sim1List.add(new SimpleModel(getResources().getString(R.string.operator_code), subscriptionInfo.get(i).o()));
+//                            sim1List.add(new SimpleModel(getResources().getString(R.string.country), subscriptionInfo.get(i).getCountryIso()));
+//                            sim1List.add(new SimpleModel(getResources().getString(R.string.roaming), subscriptionInfo.get(i).getDataRoaming()));
+//                            sim1List.add(new SimpleModel(getResources().getString(R.string.net_type), subscriptionInfo.get(i).));
+//                            sim1List.add(new SimpleModel(getResources().getString(R.string.imsi), subscriptionInfo.get(i).imsi));
+                        }
+
+                    }
+                } else {
+//                    deviceList.add(new ClickableModel(context.getResources().getString(R.string.netop), context.getResources().getString(R.string.nosim), false));
+                }
+            }
+            sim1List.add(new SimpleModel(getResources().getString(R.string.state), buildInfo.getSimState()));
+            sim1List.add(new SimpleModel(getResources().getString(R.string.operator), telephonyManager.getSimOperatorName()));
+            sim1List.add(new SimpleModel(getResources().getString(R.string.operator_code), telephonyManager.getSimOperator()));
+            sim1List.add(new SimpleModel(getResources().getString(R.string.country), telephonyManager.getSimCountryIso()));
+            sim1List.add(new SimpleModel(getResources().getString(R.string.roaming), telephonyManager.isNetworkRoaming() ? getResources().getString(R.string.enabled) :  getResources().getString(R.string.disabled)));
+            sim1List.add(new SimpleModel(getResources().getString(R.string.net_type), buildInfo.getNetworkG(telephonyManager.getNetworkType())));
+        } else {
+
+        }
+        if (simAvailable && Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP_MR1) {
             cardSim1.setVisibility(View.VISIBLE);
             simpleAdapterSim1 = new SimpleAdapter(sim1List, getContext(), color);
             recyclerSim1.setLayoutManager(new LinearLayoutManager(getContext()));
             recyclerSim1.setNestedScrollingEnabled(false);
             recyclerSim1.setAdapter(simpleAdapterSim1);
         }
-//        if (Build.VERSION.SDK_INT > 22) {
-//            manager = (SubscriptionManager) context.getSystemService(Context.TELEPHONY_SUBSCRIPTION_SERVICE);
-//            if (ActivityCompat.checkSelfPermission(context, Manifest.permission.READ_PHONE_STATE) == PackageManager.PERMISSION_GRANTED) {
-//                info = manager.getActiveSubscriptionInfoList();
-//                if (info != null) {
-//                    for (int i = 0; i < info.size(); i++) {
-//                        carrierName.add((String) info.get(i).getCarrierName());
-//                    }
-//                    for (int i = 0; i < info.size(); i++) {
-//                        deviceList.add(new ClickableModel(context.getResources().getString(R.string.netop), carrierName.get(i), false));
-//                    }
-//                } else {
-//                    deviceList.add(new ClickableModel(context.getResources().getString(R.string.netop), context.getResources().getString(R.string.nosim), false));
-//                }
-//            } else {
-//                netOperator = context.getResources().getString(R.string.requires_per);
-//                deviceList.add(new ClickableModel(context.getResources().getString(R.string.netop), netOperator, true));
-//            }
-//        } else {
-//            netOperator = telephonyManager.getNetworkOperatorName();
-//            deviceList.add(new ClickableModel(context.getResources().getString(R.string.netop), netOperator, false));
-//        }
+    }
+
+    public void getDefaultsUiInfo() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            cardDefaults.setVisibility(View.VISIBLE);
+            simpleAdapterDefault = new SimpleAdapter(defaultsList, getContext(), color);
+            recyclerDefault.setLayoutManager(new LinearLayoutManager(getContext()));
+            recyclerDefault.setNestedScrollingEnabled(false);
+            recyclerDefault.setAdapter(simpleAdapterDefault);
+        }
+    }
+
+    public void addDefaults() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            switch (SubscriptionManager.getDefaultVoiceSubscriptionId()) {
+                case -1:
+                    defaultsList.add(new SimpleModel(getResources().getString(R.string.voice), "Not Set"));
+                    break;
+                case 1:
+                    defaultsList.add(new SimpleModel(getResources().getString(R.string.voice), "SIM 1"));
+                    break;
+                case 2:
+                    defaultsList.add(new SimpleModel(getResources().getString(R.string.voice), "SIM 2"));
+                    break;
+                case 3:
+                    defaultsList.add(new SimpleModel(getResources().getString(R.string.voice), "SIM 3"));
+                    break;
+            }
+            switch (SubscriptionManager.getDefaultDataSubscriptionId()) {
+                case -1:
+                    defaultsList.add(new SimpleModel(getResources().getString(R.string.data), "Not Set"));
+                    break;
+                case 1:
+                    defaultsList.add(new SimpleModel(getResources().getString(R.string.data), "SIM 1"));
+                    break;
+                case 2:
+                    defaultsList.add(new SimpleModel(getResources().getString(R.string.data), "SIM 2"));
+                    break;
+                case 3:
+                    defaultsList.add(new SimpleModel(getResources().getString(R.string.data), "SIM 3"));
+                    break;
+            }
+            switch (SubscriptionManager.getDefaultSmsSubscriptionId()) {
+                case -1:
+                    defaultsList.add(new SimpleModel(getResources().getString(R.string.sms), "Not Set"));
+                    break;
+                case 1:
+                    defaultsList.add(new SimpleModel(getResources().getString(R.string.sms), "SIM 1"));
+                    break;
+                case 2:
+                    defaultsList.add(new SimpleModel(getResources().getString(R.string.sms), "SIM 2"));
+                    break;
+                case 3:
+                    defaultsList.add(new SimpleModel(getResources().getString(R.string.sms), "SIM 3"));
+                    break;
+            }
+        }
     }
 }
