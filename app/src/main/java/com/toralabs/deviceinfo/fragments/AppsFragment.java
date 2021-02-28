@@ -245,8 +245,12 @@ public class AppsFragment extends Fragment implements MenuItem.OnActionExpandLis
                     packagename = applicationInfo.packageName;
                     try {
                         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-                        firstInstallDate = dateFormat.format(new Date(getContext().getPackageManager().getPackageInfo(packagename, 0).firstInstallTime));
-                        lastUpdateDate = dateFormat.format(new Date(getContext().getPackageManager().getPackageInfo(packagename, 0).lastUpdateTime));
+                        if (getContext() != null) {
+                            firstInstallDate = dateFormat.format(new Date(getContext().getPackageManager().getPackageInfo(packagename, 0).firstInstallTime));
+                        }
+                        if (getContext() != null) {
+                            lastUpdateDate = dateFormat.format(new Date(getContext().getPackageManager().getPackageInfo(packagename, 0).lastUpdateTime));
+                        }
                         version = manager.getPackageInfo(packagename, 0).versionName;
                         String[] reqper = manager.getPackageInfo(packagename, PackageManager.GET_PERMISSIONS).requestedPermissions;
                         if (reqper != null) {
@@ -284,7 +288,7 @@ public class AppsFragment extends Fragment implements MenuItem.OnActionExpandLis
                     } else {
                         size = (longsize / (1024 * 1024 * 1024) + " GB");
                     }
-                    list.add(new AppListModel(icon, name, packagename, file, size, flag, version, targetsdk, minsdk, uid, permissions,firstInstallDate,lastUpdateDate));
+                    list.add(new AppListModel(icon, name, packagename, file, size, flag, version, targetsdk, minsdk, uid, permissions, firstInstallDate, lastUpdateDate));
                     if (i == packagelist.size() - 1) {
                         if (getActivity() == null)
                             return;

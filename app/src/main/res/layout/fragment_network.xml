@@ -1,4 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+Copyright 2020 Mrudul Tora (ToraLabs)
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+!-->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
@@ -175,10 +189,44 @@
                     </RelativeLayout>
 
                     <RelativeLayout
-                        android:id="@+id/cardSimPermission"
+                        android:id="@+id/cardDefault"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/cardMobile"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="2dp"
+                        android:layout_marginBottom="4dp"
+                        android:background="@color/bg"
+                        android:visibility="gone">
+
+                        <TextView
+                            android:id="@+id/txtDefaults"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="7.2dp"
+                            android:layout_marginTop="4dp"
+                            android:layout_marginEnd="8dp"
+                            android:text="@string/defaults"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recyclerDefault"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/txtDefaults"
+                            android:layout_marginLeft="2dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginRight="2dp"
+                            android:layout_marginBottom="4dp" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/cardSimPermission"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/cardDefault"
                         android:layout_marginLeft="2dp"
                         android:layout_marginTop="5dp"
                         android:layout_marginRight="2dp"
@@ -209,40 +257,6 @@
                             android:text="@string/allow"
                             android:textAllCaps="false"
                             android:textColor="@color/white" />
-                    </RelativeLayout>
-
-                    <RelativeLayout
-                        android:id="@+id/cardDefault"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/cardSimPermission"
-                        android:layout_marginLeft="2dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginRight="2dp"
-                        android:layout_marginBottom="4dp"
-                        android:background="@color/bg"
-                        android:visibility="gone">
-
-                        <TextView
-                            android:id="@+id/txtDefaults"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="7.2dp"
-                            android:layout_marginTop="4dp"
-                            android:layout_marginEnd="8dp"
-                            android:text="@string/defaults"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
-
-                        <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/recyclerDefault"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/txtDefaults"
-                            android:layout_marginLeft="2dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginRight="2dp"
-                            android:layout_marginBottom="4dp" />
                     </RelativeLayout>
 
                     <RelativeLayout
