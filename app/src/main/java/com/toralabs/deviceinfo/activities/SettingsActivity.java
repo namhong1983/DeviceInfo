@@ -1,3 +1,17 @@
+/*
+Copyright 2020 Mrudul Tora (ToraLabs)
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*/
 package com.toralabs.deviceinfo.activities;
 
 import android.Manifest;
@@ -51,6 +65,10 @@ import java.util.ArrayList;
 
 import petrov.kristiyan.colorpicker.ColorPicker;
 
+/**
+ * Created by @mrudultora
+ */
+
 public class SettingsActivity extends AppCompatActivity implements View.OnClickListener, Runnable {
     HandlerThread intentThread = new HandlerThread("intentThread");
     Handler intentHandler;
@@ -90,7 +108,7 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         preferences = new Preferences(SettingsActivity.this);
-        changeLocale=new ChangeLocale(SettingsActivity.this);
+        changeLocale = new ChangeLocale(SettingsActivity.this);
         color = Color.parseColor(preferences.getCircleColor());
         themeNo = preferences.getThemeNo();
         themeConstant = new ThemeConstant(themeNo);
@@ -202,9 +220,9 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
         } else if (id == R.id.rel_export) {
             export();
         } else if (id == R.id.rel_theme) {
-            showDialogBox(1);
+            showThemeDialog();
         } else if (id == R.id.rel_temp) {
-            showDialogBox(2);
+            showTempDialogBox();
         } else if (id == R.id.rel_language) {
             chooseLanguageDialog();
         } else if (id == R.id.rel_removeads) {
@@ -256,80 +274,89 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
         }).show();
     }
 
-    private void showDialogBox(final int id) {
-        final Dialog dialog = new Dialog(SettingsActivity.this);
-        Button btn_cancel;
-        RadioButton radio1, radio2;
-        if (id == 1) {
-            dialog.setContentView(R.layout.dialog_mode);
-        } else {
-            dialog.setContentView(R.layout.dialog_tempertaure);
-        }
-        if (dialog.getWindow() != null)
-            dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        btn_cancel = dialog.findViewById(R.id.btn_cancel);
-        radio1 = dialog.findViewById(R.id.radio1);
-        radio2 = dialog.findViewById(R.id.radio2);
-        btn_cancel.setOnClickListener(new View.OnClickListener() {
+    private void showThemeDialog() {
+        int currentThemePos = 0;
+        final String[] themeList = new String[]{getResources().getString(R.string.light), getResources().getString(R.string.dark)};
+        final AlertDialog.Builder builder = new AlertDialog.Builder(SettingsActivity.this);
+        builder.setTitle(getString(R.string.theme));
+        if (preferences.getMode())
+            currentThemePos = 1;
+        builder.setSingleChoiceItems(themeList, currentThemePos, new DialogInterface.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(DialogInterface dialog, int which) {
+                if (which == 0) {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                    preferences.setMode(false);
+                } else {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                    preferences.setMode(true);
+                }
                 dialog.dismiss();
             }
         });
-        switch (id) {
-            case 1:
-                if (flag) {
-                    radio2.setChecked(true);
-                } else {
-                    radio1.setChecked(true);
-                }
-                break;
-            case 2:
-                if (preferences.getTemp()) {
-                    radio2.setChecked(true);
-                } else {
-                    radio1.setChecked(true);
-                }
-                break;
-        }
-        radio1.setOnClickListener(new View.OnClickListener() {
+        builder.setPositiveButton(getString(R.string.cancel), new DialogInterface.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                switch (id) {
-                    case 1:
-                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-                        preferences.setMode(false);
-                        recreate();
-                        dialog.dismiss();
-                        break;
-                    case 2:
-                        preferences.setTemp(false);
-                        text_temp.setText(getResources().getString(R.string.cels));
-                        dialog.dismiss();
-                        break;
-                }
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
             }
         });
-        radio2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                switch (id) {
-                    case 1:
-                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-                        preferences.setMode(true);
-                        recreate();
-                        dialog.dismiss();
-                        break;
-                    case 2:
-                        preferences.setTemp(true);
-                        text_temp.setText(getResources().getString(R.string.fahren));
-                        dialog.dismiss();
-                        break;
-                }
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+        alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(color);
+    }
 
+    private void showTempDialogBox() {
+        int currentTempPos = 0;
+        final String[] themeList = new String[]{getResources().getString(R.string.cels), getResources().getString(R.string.fahren)};
+        final AlertDialog.Builder builder = new AlertDialog.Builder(SettingsActivity.this);
+        builder.setTitle(getString(R.string.theme));
+        if (preferences.getTemp())
+            currentTempPos = 1;
+        builder.setSingleChoiceItems(themeList, currentTempPos, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                if (which == 0) {
+                    preferences.setTemp(false);
+                    text_temp.setText(getResources().getString(R.string.cels));
+                } else {
+                    preferences.setTemp(true);
+                    text_temp.setText(getResources().getString(R.string.fahren));
+                }
+                dialog.dismiss();
             }
         });
-        dialog.show();
+        builder.setPositiveButton(getString(R.string.cancel), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+        alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(color);
+    }
+
+
+    private void chooseLanguageDialog() {
+        final String[] languageList = getResources().getStringArray(R.array.languageList);
+        final AlertDialog.Builder builder = new AlertDialog.Builder(SettingsActivity.this);
+        builder.setTitle(getString(R.string.choose_language));
+        builder.setSingleChoiceItems(languageList, pos, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                changeLocale.setLocale(getResources().getStringArray(R.array.languageCodeList)[which]);
+                recreate();
+            }
+        });
+        builder.setPositiveButton(getString(R.string.cancel), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+        alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(color);
     }
 
     @Override
@@ -451,27 +478,6 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
             sensorList = getIntent().getParcelableArrayListExtra("sensorList");
             testList = getIntent().getParcelableArrayListExtra("testList");
         }
-    }
-
-    private void chooseLanguageDialog() {
-        final String[] languageList = getResources().getStringArray(R.array.languageList);
-        final AlertDialog.Builder builder = new AlertDialog.Builder(SettingsActivity.this);
-        builder.setTitle(getString(R.string.choose_language));
-        builder.setSingleChoiceItems(languageList, pos, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                changeLocale.setLocale(getResources().getStringArray(R.array.languageCodeList)[which]);
-                recreate();
-            }
-        });
-        builder.setPositiveButton(getString(R.string.cancel), new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-            }
-        });
-        AlertDialog alertDialog=builder.create();
-        alertDialog.show();
     }
 
     @Override

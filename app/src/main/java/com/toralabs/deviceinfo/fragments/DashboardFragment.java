@@ -1,9 +1,24 @@
+/*
+Copyright 2020 Mrudul Tora (ToraLabs)
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*/
 package com.toralabs.deviceinfo.fragments;
 
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.annotation.SuppressLint;
 import android.app.ActivityManager;
+import android.app.FragmentManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -54,7 +69,12 @@ import com.toralabs.deviceinfo.models.CpuFreqModel;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DashboardFragment extends Fragment implements Handler.Callback, NativeAdListener {
+/**
+ * Created by @mrudultora
+ * Dashboard Fragment to display the details in brief.
+ */
+
+public class DashboardFragment extends Fragment implements Handler.Callback, NativeAdListener, View.OnClickListener {
     NativeAdLayout nativeAdLayout;
     NativeBannerAd nativeBannerAd;
     BuildInfo buildInfo;
@@ -91,11 +111,13 @@ public class DashboardFragment extends Fragment implements Handler.Callback, Nat
     Handler mainHandler;
     ValueAnimator sensorAnim, appAnim;
     Bundle bundle;
+    ChangeTabListener changeTabListener;
 
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         mainActivity = (MainActivity) getActivity();
+        changeTabListener=(ChangeTabListener) getActivity();
     }
 
     @Override
@@ -187,6 +209,13 @@ public class DashboardFragment extends Fragment implements Handler.Callback, Nat
         setHasOptionsMenu(true);
         findViewByIds(view);
         uiMoreInfo();
+        cardApps.setOnClickListener(this);
+        cardBattery.setOnClickListener(this);
+        cardExternal.setOnClickListener(this);
+        cardInternal.setOnClickListener(this);
+        cardSensors.setOnClickListener(this);
+        cardSystem.setOnClickListener(this);
+        cardRamStatus.setOnClickListener(this);
         recyclerCpu.scheduleLayoutAnimation();
         if (totalRAM != 0)
             ObjectAnimator.ofInt(arcProgress, "progress", (int) (usedRAM * 100 / totalRAM)).setDuration(800).start();
@@ -590,4 +619,20 @@ public class DashboardFragment extends Fragment implements Handler.Callback, Nat
     public void onLoggingImpression(Ad ad) {
     }
 
+    @Override
+    public void onClick(View v) {
+        if (v.getId() == R.id.cardBattery) {
+            changeTabListener.changeTabs(4);
+        } else if (v.getId() == R.id.cardSensors) {
+            changeTabListener.changeTabs(9);
+        } else if (v.getId() == R.id.cardApps) {
+            changeTabListener.changeTabs(13);
+        } else if (v.getId() == R.id.cardSystem || v.getId() == R.id.cardInternal || v.getId() == R.id.cardExternal) {
+            changeTabListener.changeTabs(6);
+        }
+    }
+
+    public interface ChangeTabListener{
+        void changeTabs(int pos);
+    }
 }

@@ -1,3 +1,17 @@
+/*
+Copyright 2020 Mrudul Tora (ToraLabs)
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*/
 package com.toralabs.deviceinfo.fragments;
 
 import android.annotation.SuppressLint;
@@ -34,9 +48,14 @@ import com.toralabs.deviceinfo.menuItems.Preferences;
 import com.toralabs.deviceinfo.models.AppListModel;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
+/**
+ * Created by @mrudultora
+ */
 
 public class AppsFragment extends Fragment implements MenuItem.OnActionExpandListener {
     RecyclerView recycler_apps;
@@ -47,6 +66,7 @@ public class AppsFragment extends Fragment implements MenuItem.OnActionExpandLis
     Drawable icon;
     AppListAdapter appListAdapter;
     String name, packagename, size, version, uid, targetsdk, minsdk = null, permissions = null;
+    String firstInstallDate, lastUpdateDate;
     ArrayList<AppListModel> list = new ArrayList<>();
     List<ApplicationInfo> packagelist = new ArrayList<>();
     File file;
@@ -224,6 +244,13 @@ public class AppsFragment extends Fragment implements MenuItem.OnActionExpandLis
                     StringBuilder stringBuilder = new StringBuilder();
                     packagename = applicationInfo.packageName;
                     try {
+                        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+                        if (getContext() != null) {
+                            firstInstallDate = dateFormat.format(new Date(getContext().getPackageManager().getPackageInfo(packagename, 0).firstInstallTime));
+                        }
+                        if (getContext() != null) {
+                            lastUpdateDate = dateFormat.format(new Date(getContext().getPackageManager().getPackageInfo(packagename, 0).lastUpdateTime));
+                        }
                         version = manager.getPackageInfo(packagename, 0).versionName;
                         String[] reqper = manager.getPackageInfo(packagename, PackageManager.GET_PERMISSIONS).requestedPermissions;
                         if (reqper != null) {
@@ -261,7 +288,7 @@ public class AppsFragment extends Fragment implements MenuItem.OnActionExpandLis
                     } else {
                         size = (longsize / (1024 * 1024 * 1024) + " GB");
                     }
-                    list.add(new AppListModel(icon, name, packagename, file, size, flag, version, targetsdk, minsdk, uid, permissions));
+                    list.add(new AppListModel(icon, name, packagename, file, size, flag, version, targetsdk, minsdk, uid, permissions, firstInstallDate, lastUpdateDate));
                     if (i == packagelist.size() - 1) {
                         if (getActivity() == null)
                             return;

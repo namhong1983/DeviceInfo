@@ -15,18 +15,13 @@
         <item>français</item>
         <item>Deutsche</item>
         <item>Ελληνικά</item>
-        <item>ગુજરાતી</item>
         <item>हिन्दी</item>
         <item>Bahasa Indonesia</item>
         <item>Italiano</item>
         <item>日本語</item>
-        <item>Bahasa Melayu</item>
-        <item>मराठी</item>
         <item>Português</item>
         <item>русский</item>
         <item>Español</item>
-        <item>தமிழ்</item>
-        <item>తెలుగు</item>
         <item>Tiếng Việt</item>
     </string-array>
     <string-array name="languageCodeList">
@@ -37,18 +32,13 @@
         <item>fr</item>
         <item>de</item>
         <item>el</item>
-        <item>gu</item>
         <item>hi</item>
-        <item>in</item>
+        <item>id</item>
         <item>it</item>
         <item>ja</item>
-        <item>ms</item>
-        <item>mr</item>
         <item>pt</item>
         <item>ru</item>
         <item>es</item>
-        <item>ta</item>
-        <item>te</item>
         <item>vi</item>
     </string-array>
 </resources>

@@ -24,6 +24,7 @@
     <string name="removeads">Remove Ads</string>
     <string name="contact">Contact Developer</string>
     <string name="theme">Theme</string>
+    <string name="follow_system">System default</string>
     <string name="light">Light</string>
     <string name="dark">Dark</string>
     <string name="cancel">Cancel</string>
@@ -155,6 +156,8 @@
     <string name="targetsdk">Target SDK</string>
     <string name="minsdk">Minimum SDK</string>
     <string name="uid">UID</string>
+    <string name="install_date">Installation Date</string>
+    <string name="update_date">Last Updated</string>
     <string name="permission">Permissions</string>
     <string name="appsize">Size</string>
     <string name="extract">Extract</string>
@@ -315,6 +318,9 @@
     <string name="country">Country</string>
     <string name="roaming">Roaming</string>
     <string name="networkType">Network Type</string>
+    <string name="imsi">IMSI</string>
+    <string name="enabled">Enabled</string>
+    <string name="disabled">Disabled</string>
     <string name="touchdet">Touches Detected</string>
     <string name="bssid">BSSID</string>
     <string name="dhcpserver">DHCP Server</string>
