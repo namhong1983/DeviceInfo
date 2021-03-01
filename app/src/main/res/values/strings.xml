@@ -386,7 +386,7 @@
     <string name="allow">Allow</string>
     <string name="choose_language">Choose Language</string>
     <string name="confirm">Confirm</string>
-    <string name="loading_in_local_lang">Changing Language ...</string>
+    <string name="loading_in_local_lang">Changing Language…</string>
 
     <!--   content description strings -->
     <string name="desc_mode">Mode Type Image</string>
