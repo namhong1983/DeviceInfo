@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Infos sur l\'appareil</string>
-    <string name="copyright">©ToraLabs</string>
     <string name="dashboard">Tableau de Bord</string>
     <string name="device">Appareil</string>
     <string name="system">Système</string>
@@ -386,6 +384,7 @@
     <string name="allow">Permettre</string>
     <string name="choose_language">Choisir la langue</string>
     <string name="confirm">Valider</string>
+    <string name="loading_in_local_lang">Changing Language ...</string>
     <!--   content description strings -->
     <string name="desc_mode">Type d\'image de mode</string>
     <string name="desc_theme">Image de couleur du thème</string>
@@ -398,8 +397,4 @@
     <string name="desc_circlecolor">Couleur du cercle (Thème)</string>
     <string name="desc_icon">Icône de Splash</string>
     <string name="mode">Type d\'image de mode</string>
-    <string name="nativead1">182852390180298_182853473513523</string>
-    <string name="nativead2">182852390180298_184270953371775</string>
-    <string name="nativerectangle1">182852390180298_184834379982099</string>
-    <string name="fullscreenad1">182852390180298_182931730172364</string>
 </resources>

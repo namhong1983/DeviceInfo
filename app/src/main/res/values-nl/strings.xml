@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Device Info</string>
-    <string name="copyright">©ToraLabs</string>
     <string name="dashboard">Dashboard</string>
     <string name="device">Apparaat</string>
     <string name="system">Systeem</string>
@@ -386,6 +384,7 @@
     <string name="allow">Toestaan</string>
     <string name="choose_language">Taal kiezen</string>
     <string name="confirm">Bevestigen</string>
+    <string name="loading_in_local_lang">Changing Language ...</string>
     <!--   content description strings -->
     <string name="desc_mode">Modus type afbeelding</string>
     <string name="desc_theme">Thema kleurenafbeelding</string>
@@ -398,8 +397,4 @@
     <string name="desc_circlecolor">Cirkelkleur (Thema)</string>
     <string name="desc_icon">Spattende icoon</string>
     <string name="mode">Modus type afbeelding</string>
-    <string name="nativead1">182852390180298_182853473513523</string>
-    <string name="nativead2">182852390180298_184270953371775</string>
-    <string name="nativerectangle1">182852390180298_184834379982099</string>
-    <string name="fullscreenad1">182852390180298_182931730172364</string>
 </resources>
