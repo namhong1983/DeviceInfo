@@ -1,7 +1,7 @@
 <resources>
 
-    <string name="app_name">Device Info</string>
-    <string name="copyright">©ToraLabs</string>
+    <string name="app_name" translatable="false">Device Info</string>
+    <string name="copyright" translatable="false">©ToraLabs</string>
     <string name="dashboard">Dashboard</string>
     <string name="device">Device</string>
     <string name="system">System</string>
@@ -386,6 +386,7 @@
     <string name="allow">Allow</string>
     <string name="choose_language">Choose Language</string>
     <string name="confirm">Confirm</string>
+    <string name="loading_in_local_lang">Changing Language…</string>
 
     <!--   content description strings -->
     <string name="desc_mode">Mode Type Image</string>
@@ -400,8 +401,8 @@
     <string name="desc_icon">Splash Icon</string>
     <string name="mode">Mode Type Image</string>
 
-    <string name="nativead1">182852390180298_182853473513523</string>
-    <string name="nativead2">182852390180298_184270953371775</string>
-    <string name="nativerectangle1">182852390180298_184834379982099</string>
-    <string name="fullscreenad1">182852390180298_182931730172364</string>
+    <string name="nativead1" translatable="false">182852390180298_182853473513523</string>
+    <string name="nativead2" translatable="false">182852390180298_184270953371775</string>
+    <string name="nativerectangle1" translatable="false">182852390180298_184834379982099</string>
+    <string name="fullscreenad1" translatable="false">182852390180298_182931730172364</string>
 </resources>
