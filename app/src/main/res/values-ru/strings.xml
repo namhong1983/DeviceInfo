@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Device Info</string>
-    <string name="copyright">©ToraLabs</string>
     <string name="dashboard">Панель мониторинга</string>
     <string name="device">Устройство</string>
     <string name="system">Система</string>
@@ -386,6 +384,7 @@
     <string name="allow">Разрешить</string>
     <string name="choose_language">Choose Language</string>
     <string name="confirm">Confirm</string>
+    <string name="loading_in_local_lang">Changing Language ...</string>
     <!--   content description strings -->
     <string name="desc_mode">Изображение типа режима</string>
     <string name="desc_theme">Цветное изображение темы</string>
@@ -398,8 +397,4 @@
     <string name="desc_circlecolor">Цвет круга (тема)</string>
     <string name="desc_icon">Значок всплеска</string>
     <string name="mode">Изображение типа режима</string>
-    <string name="nativead1">182852390180298_182853473513523</string>
-    <string name="nativead2">182852390180298_184270953371775</string>
-    <string name="nativerectangle1">182852390180298_184834379982099</string>
-    <string name="fullscreenad1">182852390180298_182931730172364</string>
 </resources>

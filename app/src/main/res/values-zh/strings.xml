@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Device Info</string>
-    <string name="copyright">©ToraLabs</string>
     <string name="dashboard">仪表板</string>
     <string name="device">设备</string>
     <string name="system">系统</string>
@@ -386,6 +384,7 @@
     <string name="allow">允许</string>
     <string name="choose_language">选择语言</string>
     <string name="confirm">确认</string>
+    <string name="loading_in_local_lang">Changing Language ...</string>
     <!--   content description strings -->
     <string name="desc_mode">模式类型图像</string>
     <string name="desc_theme">主题颜色图像</string>
@@ -398,8 +397,4 @@
     <string name="desc_circlecolor">圆颜色 (主题)</string>
     <string name="desc_icon">喷溅型图标</string>
     <string name="mode">模式类型图像</string>
-    <string name="nativead1">182852390180298_182853473513523</string>
-    <string name="nativead2">182852390180298_184270953371775</string>
-    <string name="nativerectangle1">182852390180298_184834379982099</string>
-    <string name="fullscreenad1">182852390180298_182931730172364</string>
 </resources>
