@@ -344,8 +344,12 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
         builder.setSingleChoiceItems(languageList, pos, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                changeLocale.setLocale(getResources().getStringArray(R.array.languageCodeList)[which]);
-                recreate();
+                if (!getResources().getStringArray(R.array.languageCodeList)[which].equals(preferences.getLocalePref())) {
+                    changeLocale.setLocale(getResources().getStringArray(R.array.languageCodeList)[which]);
+                    preferences.setLanguageChanged(true);
+                    recreate();
+                }
+                dialog.dismiss();
             }
         });
         builder.setPositiveButton(getString(R.string.cancel), new DialogInterface.OnClickListener() {
@@ -383,53 +387,58 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent intent = new Intent(SettingsActivity.this, MainActivity.class);
-        intent.putExtra("coresCount", coresCount);
-        intent.putExtra("drawableId", drawableId);
-        intent.putExtra("iconAvail", iconAvail);
-        intent.putExtra("totalRAM", totalRAM);
-        intent.putExtra("freeRam", freeRam);
-        intent.putExtra("usedRAM", usedRAM);
-        intent.putExtra("totalSys", totalSys);
-        intent.putExtra("usedSys", usedSys);
-        intent.putExtra("totalInternal", totalInternal);
-        intent.putExtra("usedInternal", usedInternal);
-        intent.putExtra("isExtAvail", isExtAvail);
-        if (isExtAvail) {
-            intent.putExtra("totalExternal", totalExternal);
-            intent.putExtra("usedExternal", usedExternal);
+        if (preferences.getLanguageChanged()) {
+            startActivity(new Intent(SettingsActivity.this, SplashActivity.class));
+            finishAffinity();
+        } else {
+            Intent intent = new Intent(SettingsActivity.this, MainActivity.class);
+            intent.putExtra("coresCount", coresCount);
+            intent.putExtra("drawableId", drawableId);
+            intent.putExtra("iconAvail", iconAvail);
+            intent.putExtra("totalRAM", totalRAM);
+            intent.putExtra("freeRam", freeRam);
+            intent.putExtra("usedRAM", usedRAM);
+            intent.putExtra("totalSys", totalSys);
+            intent.putExtra("usedSys", usedSys);
+            intent.putExtra("totalInternal", totalInternal);
+            intent.putExtra("usedInternal", usedInternal);
+            intent.putExtra("isExtAvail", isExtAvail);
+            if (isExtAvail) {
+                intent.putExtra("totalExternal", totalExternal);
+                intent.putExtra("usedExternal", usedExternal);
+            }
+            intent.putExtra("level", level);
+            intent.putExtra("voltage", voltage);
+            intent.putExtra("temp", temp);
+            intent.putExtra("status", status);
+            intent.putExtra("appCount", appCount);
+            intent.putExtra("sensorCount", sensorCount);
+            intent.putExtra("logoId", logoId);
+            intent.putExtra("wide", wide);
+            intent.putExtra("clearkey", clearkey);
+            intent.putExtra("processorName", processorName);
+            intent.putExtra("machine", machine);
+            intent.putExtra("family", family);
+            intent.putExtra("memory", memory);
+            intent.putExtra("bandwidth", bandwidth);
+            intent.putExtra("channel", channel);
+            intent.putExtra("cpuFamily", cpuFamily);
+            intent.putExtra("process", process);
+            intent.putParcelableArrayListExtra("cpuCoresList", cpuCoresList);
+            intent.putParcelableArrayListExtra("thermalList", thermalList);
+            intent.putParcelableArrayListExtra("deviceList", deviceList);
+            intent.putParcelableArrayListExtra("systemList", systemList);
+            intent.putParcelableArrayListExtra("cpuList", cpuList);
+            intent.putParcelableArrayListExtra("codecsList", codecsList);
+            intent.putParcelableArrayListExtra("displayList", displayList);
+            intent.putParcelableArrayListExtra("inputList", inputList);
+            intent.putParcelableArrayListExtra("sensorList", sensorList);
+            intent.putParcelableArrayListExtra("testList", testList);
+            ActivityOptions options =
+                    ActivityOptions.makeCustomAnimation(SettingsActivity.this, android.R.anim.fade_in, android.R.anim.fade_out);
+            startActivity(intent, options.toBundle());
+            finish();
         }
-        intent.putExtra("level", level);
-        intent.putExtra("voltage", voltage);
-        intent.putExtra("temp", temp);
-        intent.putExtra("status", status);
-        intent.putExtra("appCount", appCount);
-        intent.putExtra("sensorCount", sensorCount);
-        intent.putExtra("logoId", logoId);
-        intent.putExtra("wide", wide);
-        intent.putExtra("clearkey", clearkey);
-        intent.putExtra("processorName", processorName);
-        intent.putExtra("machine", machine);
-        intent.putExtra("family", family);
-        intent.putExtra("memory", memory);
-        intent.putExtra("bandwidth", bandwidth);
-        intent.putExtra("channel", channel);
-        intent.putExtra("cpuFamily", cpuFamily);
-        intent.putExtra("process", process);
-        intent.putParcelableArrayListExtra("cpuCoresList", cpuCoresList);
-        intent.putParcelableArrayListExtra("thermalList", thermalList);
-        intent.putParcelableArrayListExtra("deviceList", deviceList);
-        intent.putParcelableArrayListExtra("systemList", systemList);
-        intent.putParcelableArrayListExtra("cpuList", cpuList);
-        intent.putParcelableArrayListExtra("codecsList", codecsList);
-        intent.putParcelableArrayListExtra("displayList", displayList);
-        intent.putParcelableArrayListExtra("inputList", inputList);
-        intent.putParcelableArrayListExtra("sensorList", sensorList);
-        intent.putParcelableArrayListExtra("testList", testList);
-        ActivityOptions options =
-                ActivityOptions.makeCustomAnimation(SettingsActivity.this, android.R.anim.fade_in, android.R.anim.fade_out);
-        startActivity(intent, options.toBundle());
-        finish();
     }
 
     @Override

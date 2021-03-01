@@ -40,6 +40,15 @@ public class Preferences extends Activity {
         this.sp = context.getSharedPreferences("MAP_PREF", MODE_PRIVATE);
     }
 
+    public void setLanguageChanged(boolean bool) {
+        editor = sharedPreferences.edit();
+        editor.putBoolean("isLanguageChanged", bool).apply();
+    }
+
+    public boolean getLanguageChanged() {
+        return sharedPreferences.getBoolean("isLanguageChanged", false);
+    }
+
     public boolean getPurchasePref() {
         return sharedPreferences.getBoolean("purchase_state", false);
     }

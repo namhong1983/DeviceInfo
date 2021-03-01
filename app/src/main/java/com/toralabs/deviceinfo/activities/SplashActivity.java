@@ -34,6 +34,7 @@ import android.os.Message;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.toralabs.deviceinfo.R;
 import com.toralabs.deviceinfo.impClasses.BuildInfo;
@@ -106,12 +107,13 @@ public class SplashActivity extends AppCompatActivity implements Runnable, Handl
     RelativeLayout rlroot;
     GLSurfaceView glSurfaceView;
     ChangeLocale changeLocale;
+    TextView txtLoadingInLocalLang;
     List<ApplicationInfo> packageList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         preferences = new Preferences(SplashActivity.this);
-        changeLocale=new ChangeLocale(SplashActivity.this);
+        changeLocale = new ChangeLocale(SplashActivity.this);
         changeLocale.setLocale(preferences.getLocalePref());
         buildInfo = new BuildInfo(SplashActivity.this);
         if (preferences.getMode()) {
@@ -127,6 +129,12 @@ public class SplashActivity extends AppCompatActivity implements Runnable, Handl
         }
         if (getSupportActionBar() != null)
             getSupportActionBar().hide();
+        if (preferences.getLanguageChanged()) {
+            txtLoadingInLocalLang = findViewById(R.id.txtLoadingInLocalLang);
+            txtLoadingInLocalLang.setText(getResources().getString(R.string.loading_in_local_lang));
+            txtLoadingInLocalLang.setVisibility(View.VISIBLE);
+            preferences.setLanguageChanged(false);
+        }
         bundle = new Bundle();
         message = new Message();
         handlerThread.start();
