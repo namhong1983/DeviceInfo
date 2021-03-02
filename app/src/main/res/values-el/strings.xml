@@ -22,7 +22,7 @@
     <string name="removeads">Αφαίρεση Διαφημίσεων</string>
     <string name="contact">Επικοινωνήστε με τον προγραμματιστή</string>
     <string name="theme">Θέμα</string>
-    <string name="follow_system">System default</string>
+    <string name="follow_system">Προεπιλογή συστήματος</string>
     <string name="light">Φωτεινό</string>
     <string name="dark">Σκοτεινό</string>
     <string name="cancel">Ματαίωση</string>
@@ -317,8 +317,8 @@
     <string name="roaming">Περιαγωγή</string>
     <string name="networkType">Τύπος Δικτύου</string>
     <string name="imsi">IMSI</string>
-    <string name="enabled">Enabled</string>
-    <string name="disabled">Disabled</string>
+    <string name="enabled">Ενεργοποιημένο</string>
+    <string name="disabled">Ανενεργή</string>
     <string name="touchdet">Ανιχνεύθηκαν Αγγίγματα</string>
     <string name="bssid">BSSID</string>
     <string name="dhcpserver">Εξυπηρετητής DHCP</string>

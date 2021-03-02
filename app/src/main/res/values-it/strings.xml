@@ -22,7 +22,7 @@
     <string name="removeads">Rimuovi Pubblicità</string>
     <string name="contact">Contatta Sviluppatore</string>
     <string name="theme">Tema</string>
-    <string name="follow_system">System default</string>
+    <string name="follow_system">Default di sistema</string>
     <string name="light">Chiaro</string>
     <string name="dark">Scuro</string>
     <string name="cancel">Annulla</string>
@@ -317,8 +317,8 @@
     <string name="roaming">Roaming</string>
     <string name="networkType">Tipo Di Rete</string>
     <string name="imsi">IMSI</string>
-    <string name="enabled">Enabled</string>
-    <string name="disabled">Disabled</string>
+    <string name="enabled">Attivata</string>
+    <string name="disabled">Disabilitato</string>
     <string name="touchdet">Tocchi Rilevati</string>
     <string name="bssid">BSSID</string>
     <string name="dhcpserver">Server DHCP</string>

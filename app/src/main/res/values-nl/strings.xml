@@ -22,7 +22,7 @@
     <string name="removeads">Advertenties verwijderen</string>
     <string name="contact">Contact ontwikkelaar</string>
     <string name="theme">Thema</string>
-    <string name="follow_system">System default</string>
+    <string name="follow_system">Volgens systeem</string>
     <string name="light">Licht</string>
     <string name="dark">Donker</string>
     <string name="cancel">Annuleren</string>
@@ -317,8 +317,8 @@
     <string name="roaming">Roaming</string>
     <string name="networkType">Type Netwerk</string>
     <string name="imsi">IMSI</string>
-    <string name="enabled">Enabled</string>
-    <string name="disabled">Disabled</string>
+    <string name="enabled">Ingeschakeld</string>
+    <string name="disabled">Uitgeschakeld</string>
     <string name="touchdet">Aanrakingen gedetecteerd</string>
     <string name="bssid">BSSID</string>
     <string name="dhcpserver">DHCP Server</string>

@@ -22,7 +22,7 @@
     <string name="removeads">Hapus Iklan</string>
     <string name="contact">Hubungi Pengembang</string>
     <string name="theme">Tema</string>
-    <string name="follow_system">System default</string>
+    <string name="follow_system">Sistem default</string>
     <string name="light">Terang</string>
     <string name="dark">Gelap</string>
     <string name="cancel">Batal</string>
@@ -317,8 +317,8 @@
     <string name="roaming">Jelajah</string>
     <string name="networkType">Jenis Jaringan</string>
     <string name="imsi">IMSI</string>
-    <string name="enabled">Enabled</string>
-    <string name="disabled">Disabled</string>
+    <string name="enabled">Aktifkan</string>
+    <string name="disabled">Dinonaktifkan</string>
     <string name="touchdet">Touches Detected</string>
     <string name="bssid">BSSID</string>
     <string name="dhcpserver">Server DHCP</string>

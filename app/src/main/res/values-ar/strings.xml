@@ -22,7 +22,7 @@
     <string name="removeads">ازالة الاعلانات</string>
     <string name="contact">اتصل بالمطور</string>
     <string name="theme">لموضوع</string>
-    <string name="follow_system">System default</string>
+    <string name="follow_system">النظام الافتراضي</string>
     <string name="light">فاتح</string>
     <string name="dark">داكن</string>
     <string name="cancel">إلغ</string>
@@ -317,8 +317,8 @@
     <string name="roaming">التجوال</string>
     <string name="networkType">نوع الشبكة</string>
     <string name="imsi">IMSI</string>
-    <string name="enabled">Enabled</string>
-    <string name="disabled">Disabled</string>
+    <string name="enabled">مفعل</string>
+    <string name="disabled">مُعطل</string>
     <string name="touchdet">تم اكتشاف اللمس</string>
     <string name="bssid">BSSID</string>
     <string name="dhcpserver">خادم DHCP</string>

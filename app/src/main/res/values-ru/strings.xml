@@ -22,7 +22,7 @@
     <string name="removeads">Удаление рекламы</string>
     <string name="contact">Связаться с разработчиком</string>
     <string name="theme">Тема</string>
-    <string name="follow_system">System default</string>
+    <string name="follow_system">По умолчанию</string>
     <string name="light">Светлая</string>
     <string name="dark">Тёмная</string>
     <string name="cancel">Отменить</string>
@@ -317,8 +317,8 @@
     <string name="roaming">Роуминг</string>
     <string name="networkType">Тип сети</string>
     <string name="imsi">IMSI</string>
-    <string name="enabled">Enabled</string>
-    <string name="disabled">Disabled</string>
+    <string name="enabled">Активировано</string>
+    <string name="disabled">Отключён</string>
     <string name="touchdet">Обнаружены прикосновения</string>
     <string name="bssid">BSSID</string>
     <string name="dhcpserver">DHCP-сервер</string>
@@ -347,7 +347,7 @@
     <string name="total">Всего</string>
     <string name="about">О</string>
     <string name="translate">Переведите</string>
-    <string name="app_desc">Device Info is a simple and powerful Android application which gives you a complete Software and Hardware information about your Mobile device with advanced user-interface.\nIf possible help me in translating the app in your local language. Tap on translate and you will be redirected to Crowdin website. Login there and start contributing.</string>
+    <string name="app_desc">Информация об устройстве - это простое и мощное приложение для Android, которое дает вам полную информацию о программном обеспечении и аппаратном обеспечении вашего мобильного устройства с расширенным пользовательским интерфейсом.\nПо возможности помогите мне перевести приложение на ваш локальный язык. Нажмите на перевод, и вы будете перенаправлены на сайт Crowdin. Войдите там и начните вносить свой вклад.</string>
     <string name="passionate">Страстный разработчик Android. Свяжитесь со мной.</string>
     <string name="info_know">Информация, которую вы должны знать об Андроид !</string>
     <string name="whatisroot">Что такое Root ?</string>
@@ -382,8 +382,8 @@
     <string name="channels">Каналов</string>
     <string name="want_sim_info">Хотите информацию о SIM-карте? Разрешите нам определить вашу SIM-карту.</string>
     <string name="allow">Разрешить</string>
-    <string name="choose_language">Choose Language</string>
-    <string name="confirm">Confirm</string>
+    <string name="choose_language">Выберите язык</string>
+    <string name="confirm">Подтвердить</string>
     <string name="loading_in_local_lang">Changing Language ...</string>
     <!--   content description strings -->
     <string name="desc_mode">Изображение типа режима</string>

@@ -317,7 +317,7 @@
     <string name="roaming">Perayauan</string>
     <string name="networkType">Jenis rangkaian</string>
     <string name="imsi">IMSI</string>
-    <string name="enabled">Enabled</string>
+    <string name="enabled">Dayakan</string>
     <string name="disabled">Dinyahdayakan</string>
     <string name="touchdet">Sentuhan Dikesan</string>
     <string name="bssid">BSSID</string>
@@ -381,7 +381,7 @@
     <string name="bandwidth">Bandwidth</string>
     <string name="channels">Saluran</string>
     <string name="want_sim_info">Mahukan Maklumat SIM? Mari kita periksa SIM anda.</string>
-    <string name="allow">Allow</string>
+    <string name="allow">Benarkan</string>
     <string name="choose_language">Pilih bahasa</string>
     <string name="confirm">Sahkan</string>
     <string name="loading_in_local_lang">Changing Language ...</string>

@@ -22,7 +22,7 @@
     <string name="removeads">移除广告</string>
     <string name="contact">联系开发者</string>
     <string name="theme">主题</string>
-    <string name="follow_system">System default</string>
+    <string name="follow_system">系统默认</string>
     <string name="light">亮色的</string>
     <string name="dark">深色</string>
     <string name="cancel">取消</string>
@@ -317,8 +317,8 @@
     <string name="roaming">漫游</string>
     <string name="networkType">网络类型</string>
     <string name="imsi">IMSI</string>
-    <string name="enabled">Enabled</string>
-    <string name="disabled">Disabled</string>
+    <string name="enabled">启用的</string>
+    <string name="disabled">已禁用</string>
     <string name="touchdet">检测到触摸</string>
     <string name="bssid">BSSID</string>
     <string name="dhcpserver">DHCP服务器</string>

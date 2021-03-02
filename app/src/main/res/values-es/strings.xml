@@ -22,7 +22,7 @@
     <string name="removeads">Quitar anuncios</string>
     <string name="contact">Desarrollador de contacto</string>
     <string name="theme">Tema</string>
-    <string name="follow_system">System default</string>
+    <string name="follow_system">Sistema por defecto</string>
     <string name="light">Ligero</string>
     <string name="dark">Oscuro</string>
     <string name="cancel">Cancelar</string>
@@ -317,8 +317,8 @@
     <string name="roaming">Itinerancia de datos</string>
     <string name="networkType">Tipo de red</string>
     <string name="imsi">IMSI</string>
-    <string name="enabled">Enabled</string>
-    <string name="disabled">Disabled</string>
+    <string name="enabled">Habilitado</string>
+    <string name="disabled">Desabilitado</string>
     <string name="touchdet">Toces detectados</string>
     <string name="bssid">BSSID</string>
     <string name="dhcpserver">Servidor DHCP</string>
@@ -347,7 +347,7 @@
     <string name="total">Total</string>
     <string name="about">Acerca de</string>
     <string name="translate">Traducir</string>
-    <string name="app_desc">Device Info is a simple and powerful Android application which gives you a complete Software and Hardware information about your Mobile device with advanced user-interface.\nIf possible help me in translating the app in your local language. Tap on translate and you will be redirected to Crowdin website. Login there and start contributing.</string>
+    <string name="app_desc">Device Info es una aplicación de Android simple y potente que le proporciona una completa información de Software y Hardware sobre su dispositivo móvil con interfaz de usuario avanzada.\nSi es posible ayúdame a traducir la aplicación a tu idioma local. Pulsa en traducir y serás redirigido a la página web de Crowdin. Inicia sesión allí y empieza a contribuir.</string>
     <string name="passionate">Apasionado desarrollador Android. Conéctate conmigo.</string>
     <string name="info_know">Info que debes saber acerca de Android !</string>
     <string name="whatisroot">¿Qué es Root?</string>
@@ -382,8 +382,8 @@
     <string name="channels">Canales</string>
     <string name="want_sim_info">¿Quieres información de la SIM? Permítanos detectar su SIM.</string>
     <string name="allow">Permitir</string>
-    <string name="choose_language">Choose Language</string>
-    <string name="confirm">Confirm</string>
+    <string name="choose_language">Elija el idioma</string>
+    <string name="confirm">Confirmar</string>
     <string name="loading_in_local_lang">Changing Language ...</string>
     <!--   content description strings -->
     <string name="desc_mode">Tipo de imagen de modo</string>
