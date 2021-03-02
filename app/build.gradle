@@ -40,7 +40,7 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation 'com.android.billingclient:billing:3.0.2'
-    implementation 'com.facebook.android:audience-network-sdk:6.2.1'
+    implementation 'com.facebook.android:audience-network-sdk:6.3.0'
     implementation 'petrov.kristiyan:colorpicker-library:1.1.10'
     implementation 'com.google.android.gms:play-services-base:17.5.0'
     implementation 'com.ogaclejapan.smarttablayout:library:2.0.0@aar'
