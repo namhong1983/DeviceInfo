@@ -67,7 +67,6 @@ import com.toralabs.deviceinfo.R;
 import com.toralabs.deviceinfo.adapter.SimpleAdapter;
 import com.toralabs.deviceinfo.impClasses.BuildInfo;
 import com.toralabs.deviceinfo.menuItems.Preferences;
-import com.toralabs.deviceinfo.models.ClickableModel;
 import com.toralabs.deviceinfo.models.SimpleModel;
 
 import java.lang.reflect.InvocationTargetException;
